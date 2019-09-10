@@ -1,0 +1,44 @@
+---
+title: '.rmd slide exploration'
+subtitle: 'STAT 545 Lecture 3'
+author: "Trevor Baker"
+date: "10/09/2019"
+output: ioslides_presentation
+---
+
+```{r load_lib, echo=FALSE, message=FALSE, warning=FALSE}
+
+library(gapminder)
+library(tibble)
+library(DT)
+
+```
+
+## Print out gapminder data:
+
+```{r print_gapm, echo=FALSE}
+
+gapminder
+
+```
+
+
+## Convert mtcars to a tibble and wrap in datatable:
+
+```{r mtcars_tibble, echo=FALSE}
+
+#this is an R comment
+
+DT::datatable( tibble::as_tibble(mtcars) )
+
+```
+
+## There are this many rows in the mtcars dataset:
+
+```{r nrow_mtc, echo=FALSE}
+
+nrow(mtcars)
+
+```
+
+
