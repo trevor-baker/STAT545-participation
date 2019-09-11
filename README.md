@@ -26,7 +26,7 @@ When I'm not working, I enjoy going for walks and hikes, playing and watching ho
 
 You can contact me at <tbaker@iegconsulting.com>
 
-![Surface water balances in mine reclamation](https://github.com/trevor-baker/STAT545-participation/blob/master/Assignment 1 files/Ecohydrology-and-mine-affected-landscapes.jfif)
+![Surface water balances in mine reclamation](https://github.com/trevor-baker/STAT545-participation/blob/master/Assignment_1_files/Ecohydrology-and-mine-affected-landscapes.jfif)
 
 
 
