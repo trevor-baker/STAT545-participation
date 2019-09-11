@@ -5,14 +5,15 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 
 You can find my in-class work and notes organized by lecture. Here is my work to date:
 
-| Lecture # |   Date   | Link to my work |
-|-----------|----------|-----------------|
-|     1     | Sept 3   | _NA_            |
-|     2     | Sept 5   | [click here][1] |
-|     3     | Sept 10  | [click here][2] |
+| Lecture # |   Date   | Links to my work |
+|-----------|:---------|:----------------:|
+|     1     | Sept 3   | _NA_             |
+|     2     | Sept 5   | [click here][1]  |
+|     3     | Sept 10  | [click here][2]  |
 
 [1]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lecture%202%20-%20Sep%205>
 [2]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lecture%203%20-%20Sep%2010>
+
 
 ## Who am I?
 
