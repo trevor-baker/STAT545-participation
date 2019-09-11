@@ -26,6 +26,8 @@ You can contact me at <tbaker@iegconsulting.com>
 
 ![Surface water balances in mine reclamation](https://github.com/trevor-baker/STAT545-participation/blob/master/Assignment_1_files/Ecohydrology-and-mine-affected-landscapes.jfif)
 
+<img src="https://github.com/trevor-baker/STAT545-participation/blob/master/Assignment_1_files/Ecohydrology-and-mine-affected-landscapes.jfif" alt="Surface water balances in mine reclamation" width="400">
+
 
 
 
