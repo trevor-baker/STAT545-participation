@@ -8,9 +8,11 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 |     1     | Sept 3   | _NA_             |
 |     2     | Sept 5   | [click here][1]  |
 |     3     | Sept 10  | [click here][2]  |
+|     4     | Sept 12  | [click here][3]  |
 
 [1]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lecture%202%20-%20Sep%205>
 [2]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lecture%203%20-%20Sep%2010>
+[3]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lecture%204%20-%20Sep%2012>
 
 
 ## Who am I?
@@ -20,7 +22,7 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 
 My work both professionally and as an MSc student pertains to the relationships between site and soil properties and ecosystem occurrence, particularly for [mine reclamation](https://www.integralecologygroup.com/projects/predicting-ecosystem-occurrence-for-mine-reclamation "My work").
 
-<img src="https://github.com/trevor-baker/STAT545-participation/blob/master/Assignment_1_files/Ecohydrology-and-mine-affected-landscapes.jfif" alt="Surface water balances in mine reclamation" width="400">
+<img src="https://github.com/trevor-baker/STAT545-participation/blob/master/Assignment_1/Ecohydrology-and-mine-affected-landscapes.jfif" alt="Surface water balances in mine reclamation" width="400">
 
 When I'm not working, I enjoy going for walks and hikes, playing and watching hockey, cooking, and quality time with my favourite people.
 

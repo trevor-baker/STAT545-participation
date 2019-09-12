@@ -29,6 +29,16 @@ names(gm)
 
 ```
 
+Here is a brief summary of the integer and numeric columns:
+
+```{r quick_summ, echo=FALSE}
+
+summary(gm[ ,c("year", "lifeExp", "pop", "gdpPercap")])
+
+```
+
+
+
 
 While Europe is the richest continent on average, Kuwait, which is included in the Asian continent, is the richest country overall. In the graph below, all countries with average income values greater than $40000 have been labelled. These include Kuwait, Norway, Singapore, and the United States.
 
