@@ -1,6 +1,6 @@
 # Trevor Baker's STAT 545 Participation Repository
 
-## What is this?
+## What is this???
 This repository holds all of my work from in-class activities during _STAT 545_ lectures during the __Fall 2019__ semester at _UBC_. My in-class work and notes are organized in folders by lecture. Here is my work to date:
 
 | Lecture # |   Date   | Links to my work |
