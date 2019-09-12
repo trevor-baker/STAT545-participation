@@ -10,9 +10,9 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 |     3     | Sept 10  | [click here][2]  |
 |     4     | Sept 12  | [click here][3]  |
 
-[1]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lecture%202%20-%20Sep%205>
-[2]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lecture%203%20-%20Sep%2010>
-[3]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lecture%204%20-%20Sep%2012>
+[1]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lecture%2002%20-%20Sep%205>
+[2]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lecture%2003%20-%20Sep%2010>
+[3]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lecture%2004%20-%20Sep%2012>
 
 
 ## Who am I?
