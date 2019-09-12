@@ -21,7 +21,7 @@ gm2 <- gm[which(gm$year==1952 | gm$year==2007),]
 
 ```
 
-The dataset includes the following fields:
+The dataset includes the following fields/columns:
 
 ```{r, echo=FALSE}
 
@@ -42,7 +42,7 @@ summary(gm[ ,c("year", "lifeExp", "pop", "gdpPercap")])
 
 While Europe is the richest continent on average, Kuwait, which is included in the Asian continent, is the richest country overall. In the graph below, all countries with average income values greater than $40000 have been labelled. These include Kuwait, Norway, Singapore, and the United States.
 
-```{r}
+```{r boxplot, echo=FALSE}
 
 { 
   par(mar=c(5,6,1,1))
@@ -79,7 +79,7 @@ While Europe is the richest continent on average, Kuwait, which is included in t
 
 Some countries have gotten more wealthy over time:
 
-```{r}
+```{r china, echo=FALSE}
 
 plot(x=gm$year[gm$country=="China"],
      y=gm$gdpPercap[gm$country=="China"],
@@ -92,7 +92,7 @@ plot(x=gm$year[gm$country=="China"],
 
 Some countries have gotten less wealthy over time:
 
-```{r}
+```{r kuwait, echo=FALSE}
 options(scipen = 8)
 plot(x=gm$year[gm$country=="Kuwait"],
      y=gm$gdpPercap[gm$country=="Kuwait"],
@@ -104,7 +104,7 @@ plot(x=gm$year[gm$country=="Kuwait"],
 
 
 There seems to be an asymptotic relationship between life expectancy and GDP. Mean life expectancy doesn't increase much beyond 80 years, no matter how rich the country.
-```{r}
+```{r lifeExp_GDP, echo=FALSE}
 
 leg.labels <- levels(as.factor(gm$continent))
 

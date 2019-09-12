@@ -1,0 +1,16 @@
+---
+title: "Lecture 4 notes - Version control"
+author: "Trevor Baker"
+date: "12/09/2019"
+output: html_document
+---
+
+* clone vs pull
+  * clone when you don't have a local copy
+  * pull when you do have a local copy
+
+
+* to link your git account, use Terminal in RStudio, and enter these commands sequentially:
+  * git config --global user.name 'Jane Doe'
+  * git config --global user.email 'jane@example.com'
+  * git config --global --list 
