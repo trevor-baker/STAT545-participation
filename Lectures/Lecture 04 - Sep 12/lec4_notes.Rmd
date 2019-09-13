@@ -16,5 +16,5 @@ output: html_document
   * git config --global --list
   
 
-* if you want to revert to earlier stage of files, previous commit, then easiest way is to do it online in Github
-  * navigate back in commits, open or download file, take what you need, save it to your current branch
+* if you want to revert to earlier stage of files, i.e. previous commit, then easiest way is to do it online in Github
+  * navigate back in commit history, open or download file, take what you need, save it to your current branch

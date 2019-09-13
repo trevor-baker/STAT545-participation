@@ -1,16 +1,13 @@
 ---
-title: 'Assignment 1: gapminder exploration'
+title: 'Assignment 1: gapminder slides'
 author: "Trevor Baker, 98610074"
-date: "11/09/2019"
-output: github_document
+date: "13/09/2019"
+output: ioslides_presentation
 ---
-
-This document explores the _gapminder_ dataset of historical demographic data spanning from 1952 to 2007 in five-year intervals.
 
 ```{r load_data, echo=FALSE, message=FALSE, warning=FALSE}
 
 library(gapminder)
-library(plyr) #trusting that the TA will have this installed already
 data("gapminder")
 
 #shorten name
@@ -20,18 +17,7 @@ gm <- gapminder
 ```
 
 ## Basic dataset overview
-
-
-The dataset includes the following fields/columns:
-
-```{r names, echo=FALSE}
-
-names(gm)
-
-```
-
-
-Here is a brief summary of the integer and numeric columns:   
+<font size="2"> Here is a brief summary of the integer and numeric columns: </font>  
 ```{r quick_summ, echo=FALSE}
 
 options(scipen=8) #prevent scientific notation in population summary
@@ -39,25 +25,23 @@ summary(gm[ ,c("year", "lifeExp", "pop", "gdpPercap")]) #summarize numeric colum
 
 ```
 
-## GDP trends
-
-While Oceania is the richest continent on average, Kuwait, which is on the Asian continent, is the richest country overall. In the graph below, all countries with average income values greater than $50000 have been labelled. These include Kuwait, Norway, Singapore, and the United States.   
+## GDP ranges by continent
+<font size="2"> While Oceania is the richest continent on average, Kuwait, which is on the Asian continent, is the richest country overall. In the graph below, all countries with average income values greater than $50000 have been labelled. These include Kuwait, Norway, Singapore, and the United States. </font>   
 ```{r boxplot, echo=FALSE}
 
 { 
-  par(mar=c(5,6,1,1)) #change margins to fit continent labels
-  
-  boxplot(gm$gdpPercap~gm$continent, #make boxplot
+  par(mar=c(5,6,1,1))
+  boxplot(gm$gdpPercap~gm$continent,
         xlab="",
         ylab = "",
         yaxt="n",
         las=3,
         col="lightgrey")
   
-  #y tick mark values
+  #y tick mark valules
   ytick <- seq(0,120000,20000)
    
-  #make y axis and label it
+  #make y axis
   axis(2, 
        at=seq(0,120000,20000), 
        labels=format(ytick, scientific = FALSE), 
@@ -80,15 +64,18 @@ While Oceania is the richest continent on average, Kuwait, which is on the Asian
 ```
 
 
-A look at some GDP trends by country over time:   
+## GDP trends by country over time 
+<font size="2"> Most countries had a positive trend in GDP over the dataset period, but a few, such as the Democratic Republic of Congo, actually decreased in inflation-adjusted GDP. </font>   
 ```{r trends, echo=FALSE}
 
-#select and merge data for first ad last years
+#select and merge data for first and last years
 gm1952 <- plyr::ddply(gm[gm$year==1952,], ~country, plyr::summarise,
-                      inc1952=gdpPercap)
+                      inc1952=gdpPercap,
+                      continent=continent)
 gm2007 <- plyr::ddply(gm[gm$year==2007,], ~country, plyr::summarise, 
-                      inc2007=gdpPercap)
-gm2 <- merge(gm1952, gm2007, by="country")
+                      inc2007=gdpPercap,
+                      continent=continent)
+gm2 <- merge(gm1952, gm2007)
 
 #calculate and sort by % diff in GDP over full dataset duration
 gm2$pcdiff <- round((gm2$inc2007-gm2$inc1952)/gm2$inc1952 * 100, 1)
@@ -141,11 +128,12 @@ big.decr <- as.character( gm2$country[nrow(gm2)] ) #which country had largest de
 }
 ```
 
+## GDP and life expectancy
+<font size="2"> You can see general groupings of GDP and life expectancy by continent in the graph below. Also, there seems to be an asymptotic relationship between life expectancy and GDP. Mean life expectancy doesn't increase much beyond 80 years, no matter how rich the country. </font>
 
-You can see general groupings of GDP and life expectancy by continent in the graph below. Also, there seems to be an asymptotic relationship between life expectancy and GDP. Mean life expectancy doesn't increase much beyond 80 years, no matter how rich the country.   
 ```{r lifeExp_GDP, echo=FALSE}
 
-leg.labels <- levels(as.factor(gm$continent)) #need labels for legend
+leg.labels <- levels(as.factor(gm$continent))
 
 { 
   plot(gm$gdpPercap,
