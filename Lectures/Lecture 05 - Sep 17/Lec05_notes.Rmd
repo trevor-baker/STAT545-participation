@@ -1,0 +1,12 @@
+---
+title: "Lec05_notes"
+author: "Trevor Baker"
+date: "17/09/2019"
+output: html_document
+---
+
+## Plotting packages
+base R - slow
+lattice - outdated
+ggplot2 - good
+plotly - interactive

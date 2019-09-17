@@ -2,7 +2,9 @@
 title: 'Assignment 1: gapminder slides'
 author: "Trevor Baker, 98610074"
 date: "13/09/2019"
-output: ioslides_presentation
+output:
+  beamer_presentation: default
+  ioslides_presentation: default
 ---
 
 ```{r load_data, echo=FALSE, message=FALSE, warning=FALSE}
