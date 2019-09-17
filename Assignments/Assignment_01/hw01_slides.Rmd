@@ -1,11 +1,16 @@
 ---
 title: 'Assignment 1: gapminder slides'
 author: "Trevor Baker, 98610074"
-date: "13/09/2019"
+date: "17/09/2019"
 output:
   beamer_presentation: default
-  ioslides_presentation: default
+  ioslides_presentation:
+    smaller: yes
 ---
+
+```{r knitr_opt, include = FALSE}
+knitr::opts_chunk$set(out.height = "50%",  out.width = "70%")
+```
 
 ```{r load_data, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -19,16 +24,19 @@ gm <- gapminder
 ```
 
 ## Basic dataset overview
-<font size="2"> Here is a brief summary of the integer and numeric columns: </font>  
+'gapminder' is a dataset providing demographic data from 1952 to 2007. Its numeric variables include year, life expectancy, population and GDP per capita. Here is a simple statistical summary of them:
+
+\tiny
 ```{r quick_summ, echo=FALSE}
 
 options(scipen=8) #prevent scientific notation in population summary
 summary(gm[ ,c("year", "lifeExp", "pop", "gdpPercap")]) #summarize numeric columns
 
 ```
+\normalsize
 
 ## GDP ranges by continent
-<font size="2"> While Oceania is the richest continent on average, Kuwait, which is on the Asian continent, is the richest country overall. In the graph below, all countries with average income values greater than $50000 have been labelled. These include Kuwait, Norway, Singapore, and the United States. </font>   
+<font size="1"> While Oceania is the richest continent on average, Kuwait, which is on the Asian continent, is the richest country overall. In the graph below, all countries with average income values greater than $50000 have been labelled. These include Kuwait, Norway, Singapore, and the United States. </font>   
 ```{r boxplot, echo=FALSE}
 
 { 
@@ -40,7 +48,7 @@ summary(gm[ ,c("year", "lifeExp", "pop", "gdpPercap")]) #summarize numeric colum
         las=3,
         col="lightgrey")
   
-  #y tick mark valules
+  #y tick mark values
   ytick <- seq(0,120000,20000)
    
   #make y axis
@@ -49,7 +57,7 @@ summary(gm[ ,c("year", "lifeExp", "pop", "gdpPercap")]) #summarize numeric colum
        labels=format(ytick, scientific = FALSE), 
        las=1)
   mtext("GDP per capita ($ US, inflation-adjusted)", 
-        side=2, 
+        side=2, #cex=0.7, 
         line=4)
   
   #text for points with high income
@@ -131,7 +139,7 @@ big.decr <- as.character( gm2$country[nrow(gm2)] ) #which country had largest de
 ```
 
 ## GDP and life expectancy
-<font size="2"> You can see general groupings of GDP and life expectancy by continent in the graph below. Also, there seems to be an asymptotic relationship between life expectancy and GDP. Mean life expectancy doesn't increase much beyond 80 years, no matter how rich the country. </font>
+<font size="2"> You can see general groupings of GDP and life expectancy by continent in the graph below. There seems to be an asymptotic relationship between life expectancy and GDP - mean life expectancy doesn't increase much beyond 80 years, no matter how rich the country. </font>
 
 ```{r lifeExp_GDP, echo=FALSE}
 

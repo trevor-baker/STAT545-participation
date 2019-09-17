@@ -10,7 +10,7 @@ theme: paper
   
 Begin by loading the required packages. If you don't have these installed (or don't know whether you have them installed), you can install them by executing the following code in your console:
   
-```{r}
+```
 #install.packages("tidyverse") #already done
 #install.packages("scales")
 #install.packages("tsibble")
@@ -85,8 +85,8 @@ Produce a line chart showing the concentration over time. Specifically, the plot
   Fill in the blanks to obtain the plot:
   
 ```{r, fig.width = 5, fig.height = 2}
-ggplot(FILL_THIS_IN, aes(FILL_THIS_IN, FILL_THIS_IN)) +
-  FILL_THIS_IN()
+p <- ggplot(mauna, aes(month, conc)) +
+      geom_line()
 ```
 
 ### 2(b)
@@ -100,7 +100,7 @@ The following code mistakenly puts the month variable on the y-axis. Fill in the
 
 ```{r, fig.width = 5, fig.height = 2}
 ggplot(mauna, aes(y = month)) +
-  geom_point(aes(FILL_THIS_IN))
+  geom_line(aes(month,conc)) + ylab("conc_CO2")
 ```
 
 ### 2(c)
@@ -109,7 +109,7 @@ You can store the output of the plot in a variable, too. Store the plot from 2(a
 
 ```{r, fig.width = 5, fig.height = 2}
 p +
-  FILL_THIS_IN(colour = FILL_THIS_IN)
+  geom_point(colour = "green3", alpha=0.1)
 ```
 
 ### 2(d)
@@ -117,8 +117,11 @@ p +
 What's wrong with the following code? Fix it.
 
 ```{r, fig.width = 5, fig.height = 2}
-ggplot(gapminder) +
-  geom_point(x = gdpPercap, y = lifeExp, alpha = 0.1)
+# ggplot(gapminder) +
+#   geom_point(x = gdpPercap, y = lifeExp, alpha = 0.1)
+
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point(alpha = 0.1)
 ```
 
 
@@ -132,7 +135,16 @@ So you're a ggplot2 pro? Then, let's see this plot adapted to polar coordinates.
 The plot should look like a spiral, or concentric circles. 
 
 ```{r, fig.width = 5, fig.height = 2}
-FILL_THIS_IN
+
+
+p + 
+  coord_polar() + 
+  ylab("Concentration CO2")
+
+# #doesn't work
+# mauna$mm <- months(mauna$month)
+# ggplot(mauna, aes(x=mm, y=conc)) + coord_polar() + geom_point()
+
 ```
 
 
