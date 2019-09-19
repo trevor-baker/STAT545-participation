@@ -28,19 +28,8 @@ Load the `gapminder` and `tidyverse` packages. Hint: `suppressPackageStartupMess
 
 ```r
 # load your packages here:
-library(FILL_THIS_IN)
-```
-
-```
-## Error in library(FILL_THIS_IN): there is no package called 'FILL_THIS_IN'
-```
-
-```r
-library(FILL_THIS_IN)
-```
-
-```
-## Error in library(FILL_THIS_IN): there is no package called 'FILL_THIS_IN'
+library(tidyverse)
+library(gapminder)
 ```
     
 
@@ -50,11 +39,24 @@ library(FILL_THIS_IN)
 
 
 ```r
-select(gapminder, FILL_THIS_IN)
+dplyr::select(gapminder, year, lifeExp, country)
 ```
 
 ```
-## Error in select(gapminder, FILL_THIS_IN): could not find function "select"
+## # A tibble: 1,704 x 3
+##     year lifeExp country    
+##    <int>   <dbl> <fct>      
+##  1  1952    28.8 Afghanistan
+##  2  1957    30.3 Afghanistan
+##  3  1962    32.0 Afghanistan
+##  4  1967    34.0 Afghanistan
+##  5  1972    36.1 Afghanistan
+##  6  1977    38.4 Afghanistan
+##  7  1982    39.9 Afghanistan
+##  8  1987    40.8 Afghanistan
+##  9  1992    41.7 Afghanistan
+## 10  1997    41.8 Afghanistan
+## # ... with 1,694 more rows
 ```
 
 
@@ -67,16 +69,42 @@ select(gapminder, country, continent, year, lifeExp)
 ```
 
 ```
-## Error in select(gapminder, country, continent, year, lifeExp): could not find function "select"
+## # A tibble: 1,704 x 4
+##    country     continent  year lifeExp
+##    <fct>       <fct>     <int>   <dbl>
+##  1 Afghanistan Asia       1952    28.8
+##  2 Afghanistan Asia       1957    30.3
+##  3 Afghanistan Asia       1962    32.0
+##  4 Afghanistan Asia       1967    34.0
+##  5 Afghanistan Asia       1972    36.1
+##  6 Afghanistan Asia       1977    38.4
+##  7 Afghanistan Asia       1982    39.9
+##  8 Afghanistan Asia       1987    40.8
+##  9 Afghanistan Asia       1992    41.7
+## 10 Afghanistan Asia       1997    41.8
+## # ... with 1,694 more rows
 ```
 
 ```r
 # Better way:
-select(gapminder, FILL_THIS_IN)
+select(gapminder, country:lifeExp) #colon between 1st and last columns
 ```
 
 ```
-## Error in select(gapminder, FILL_THIS_IN): could not find function "select"
+## # A tibble: 1,704 x 4
+##    country     continent  year lifeExp
+##    <fct>       <fct>     <int>   <dbl>
+##  1 Afghanistan Asia       1952    28.8
+##  2 Afghanistan Asia       1957    30.3
+##  3 Afghanistan Asia       1962    32.0
+##  4 Afghanistan Asia       1967    34.0
+##  5 Afghanistan Asia       1972    36.1
+##  6 Afghanistan Asia       1977    38.4
+##  7 Afghanistan Asia       1982    39.9
+##  8 Afghanistan Asia       1987    40.8
+##  9 Afghanistan Asia       1992    41.7
+## 10 Afghanistan Asia       1997    41.8
+## # ... with 1,694 more rows
 ```
 
 
@@ -84,22 +112,48 @@ select(gapminder, FILL_THIS_IN)
 
 
 ```r
-select(gapminder, FILL_THIS_IN)
+select(gapminder, -lifeExp)
 ```
 
 ```
-## Error in select(gapminder, FILL_THIS_IN): could not find function "select"
+## # A tibble: 1,704 x 5
+##    country     continent  year      pop gdpPercap
+##    <fct>       <fct>     <int>    <int>     <dbl>
+##  1 Afghanistan Asia       1952  8425333      779.
+##  2 Afghanistan Asia       1957  9240934      821.
+##  3 Afghanistan Asia       1962 10267083      853.
+##  4 Afghanistan Asia       1967 11537966      836.
+##  5 Afghanistan Asia       1972 13079460      740.
+##  6 Afghanistan Asia       1977 14880372      786.
+##  7 Afghanistan Asia       1982 12881816      978.
+##  8 Afghanistan Asia       1987 13867957      852.
+##  9 Afghanistan Asia       1992 16317921      649.
+## 10 Afghanistan Asia       1997 22227415      635.
+## # ... with 1,694 more rows
 ```
 
 4. Put `continent` first. Hint: use the `everything()` function.
 
 
 ```r
-select(gapminder, FILL_THIS_IN, FILL_THIS_IN)
+select(gapminder, continent, everything())
 ```
 
 ```
-## Error in select(gapminder, FILL_THIS_IN, FILL_THIS_IN): could not find function "select"
+## # A tibble: 1,704 x 6
+##    continent country      year lifeExp      pop gdpPercap
+##    <fct>     <fct>       <int>   <dbl>    <int>     <dbl>
+##  1 Asia      Afghanistan  1952    28.8  8425333      779.
+##  2 Asia      Afghanistan  1957    30.3  9240934      821.
+##  3 Asia      Afghanistan  1962    32.0 10267083      853.
+##  4 Asia      Afghanistan  1967    34.0 11537966      836.
+##  5 Asia      Afghanistan  1972    36.1 13079460      740.
+##  6 Asia      Afghanistan  1977    38.4 14880372      786.
+##  7 Asia      Afghanistan  1982    39.9 12881816      978.
+##  8 Asia      Afghanistan  1987    40.8 13867957      852.
+##  9 Asia      Afghanistan  1992    41.7 16317921      649.
+## 10 Asia      Afghanistan  1997    41.8 22227415      635.
+## # ... with 1,694 more rows
 ```
 
 
@@ -108,19 +162,66 @@ select(gapminder, FILL_THIS_IN, FILL_THIS_IN)
 
 ```r
 # compare
-select(gapminder, FILL_THIS_IN)
+select(gapminder, cont=continent, everything()) #can do it in select, but will reorder things
 ```
 
 ```
-## Error in select(gapminder, FILL_THIS_IN): could not find function "select"
+## # A tibble: 1,704 x 6
+##    cont  country      year lifeExp      pop gdpPercap
+##    <fct> <fct>       <int>   <dbl>    <int>     <dbl>
+##  1 Asia  Afghanistan  1952    28.8  8425333      779.
+##  2 Asia  Afghanistan  1957    30.3  9240934      821.
+##  3 Asia  Afghanistan  1962    32.0 10267083      853.
+##  4 Asia  Afghanistan  1967    34.0 11537966      836.
+##  5 Asia  Afghanistan  1972    36.1 13079460      740.
+##  6 Asia  Afghanistan  1977    38.4 14880372      786.
+##  7 Asia  Afghanistan  1982    39.9 12881816      978.
+##  8 Asia  Afghanistan  1987    40.8 13867957      852.
+##  9 Asia  Afghanistan  1992    41.7 16317921      649.
+## 10 Asia  Afghanistan  1997    41.8 22227415      635.
+## # ... with 1,694 more rows
 ```
 
 ```r
-rename(gapminder, FILL_THIS_IN)
+select(gapminder, everything(), cont=continent, gdp=gdpPercap) #this does not move cont to the end, just ensures that all columns are included.
 ```
 
 ```
-## Error in rename(gapminder, FILL_THIS_IN): could not find function "rename"
+## # A tibble: 1,704 x 6
+##    country     cont   year lifeExp      pop   gdp
+##    <fct>       <fct> <int>   <dbl>    <int> <dbl>
+##  1 Afghanistan Asia   1952    28.8  8425333  779.
+##  2 Afghanistan Asia   1957    30.3  9240934  821.
+##  3 Afghanistan Asia   1962    32.0 10267083  853.
+##  4 Afghanistan Asia   1967    34.0 11537966  836.
+##  5 Afghanistan Asia   1972    36.1 13079460  740.
+##  6 Afghanistan Asia   1977    38.4 14880372  786.
+##  7 Afghanistan Asia   1982    39.9 12881816  978.
+##  8 Afghanistan Asia   1987    40.8 13867957  852.
+##  9 Afghanistan Asia   1992    41.7 16317921  649.
+## 10 Afghanistan Asia   1997    41.8 22227415  635.
+## # ... with 1,694 more rows
+```
+
+```r
+rename(gapminder, cont=continent) #rename it in place, no reorder
+```
+
+```
+## # A tibble: 1,704 x 6
+##    country     cont   year lifeExp      pop gdpPercap
+##    <fct>       <fct> <int>   <dbl>    <int>     <dbl>
+##  1 Afghanistan Asia   1952    28.8  8425333      779.
+##  2 Afghanistan Asia   1957    30.3  9240934      821.
+##  3 Afghanistan Asia   1962    32.0 10267083      853.
+##  4 Afghanistan Asia   1967    34.0 11537966      836.
+##  5 Afghanistan Asia   1972    36.1 13079460      740.
+##  6 Afghanistan Asia   1977    38.4 14880372      786.
+##  7 Afghanistan Asia   1982    39.9 12881816      978.
+##  8 Afghanistan Asia   1987    40.8 13867957      852.
+##  9 Afghanistan Asia   1992    41.7 16317921      649.
+## 10 Afghanistan Asia   1997    41.8 22227415      635.
+## # ... with 1,694 more rows
 ```
 
 
@@ -130,33 +231,72 @@ rename(gapminder, FILL_THIS_IN)
 
 
 ```r
-arrange(gapminder, FILL_THIS_IN)
+arrange(gapminder, year)
 ```
 
 ```
-## Error in arrange(gapminder, FILL_THIS_IN): could not find function "arrange"
+## # A tibble: 1,704 x 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Albania     Europe     1952    55.2  1282697     1601.
+##  3 Algeria     Africa     1952    43.1  9279525     2449.
+##  4 Angola      Africa     1952    30.0  4232095     3521.
+##  5 Argentina   Americas   1952    62.5 17876956     5911.
+##  6 Australia   Oceania    1952    69.1  8691212    10040.
+##  7 Austria     Europe     1952    66.8  6927772     6137.
+##  8 Bahrain     Asia       1952    50.9   120447     9867.
+##  9 Bangladesh  Asia       1952    37.5 46886859      684.
+## 10 Belgium     Europe     1952    68    8730405     8343.
+## # ... with 1,694 more rows
 ```
 
 2. Order by year, in descending order.
 
 
 ```r
-arrange(gapminder, FILL_THIS_IN)
+arrange(gapminder, desc(year))
 ```
 
 ```
-## Error in arrange(gapminder, FILL_THIS_IN): could not find function "arrange"
+## # A tibble: 1,704 x 6
+##    country     continent  year lifeExp       pop gdpPercap
+##    <fct>       <fct>     <int>   <dbl>     <int>     <dbl>
+##  1 Afghanistan Asia       2007    43.8  31889923      975.
+##  2 Albania     Europe     2007    76.4   3600523     5937.
+##  3 Algeria     Africa     2007    72.3  33333216     6223.
+##  4 Angola      Africa     2007    42.7  12420476     4797.
+##  5 Argentina   Americas   2007    75.3  40301927    12779.
+##  6 Australia   Oceania    2007    81.2  20434176    34435.
+##  7 Austria     Europe     2007    79.8   8199783    36126.
+##  8 Bahrain     Asia       2007    75.6    708573    29796.
+##  9 Bangladesh  Asia       2007    64.1 150448339     1391.
+## 10 Belgium     Europe     2007    79.4  10392226    33693.
+## # ... with 1,694 more rows
 ```
 
 3. Order by year, then by life expectancy.
 
 
 ```r
-arrange(gapminder, FILL_THIS_IN, FILL_THIS_IN)
+arrange(gapminder, desc(year), desc(lifeExp))
 ```
 
 ```
-## Error in arrange(gapminder, FILL_THIS_IN, FILL_THIS_IN): could not find function "arrange"
+## # A tibble: 1,704 x 6
+##    country          continent  year lifeExp       pop gdpPercap
+##    <fct>            <fct>     <int>   <dbl>     <int>     <dbl>
+##  1 Japan            Asia       2007    82.6 127467972    31656.
+##  2 Hong Kong, China Asia       2007    82.2   6980412    39725.
+##  3 Iceland          Europe     2007    81.8    301931    36181.
+##  4 Switzerland      Europe     2007    81.7   7554661    37506.
+##  5 Australia        Oceania    2007    81.2  20434176    34435.
+##  6 Spain            Europe     2007    80.9  40448191    28821.
+##  7 Sweden           Europe     2007    80.9   9031088    33860.
+##  8 Israel           Asia       2007    80.7   6426679    25523.
+##  9 France           Europe     2007    80.7  61083916    30470.
+## 10 Canada           Americas   2007    80.7  33390141    36319.
+## # ... with 1,694 more rows
 ```
 
 ## Piping, `%>%` (8 min)
@@ -180,11 +320,29 @@ Now using with pipes:
 
 ```r
 # alter the below to include 2 "pipes"
-arrange(select(gapminder, year, lifeExp, country), year, lifeExp)
+  # first select columns, then arrange
+  # don't need to id the dataframe after first line
+  # the pipe puts the previous line into the first argument of the next function
+gapminder %>%
+  select(year, lifeExp, country) %>% 
+  arrange(year, lifeExp)
 ```
 
 ```
-## Error in arrange(select(gapminder, year, lifeExp, country), year, lifeExp): could not find function "arrange"
+## # A tibble: 1,704 x 3
+##     year lifeExp country      
+##    <int>   <dbl> <fct>        
+##  1  1952    28.8 Afghanistan  
+##  2  1952    30   Gambia       
+##  3  1952    30.0 Angola       
+##  4  1952    30.3 Sierra Leone 
+##  5  1952    31.3 Mozambique   
+##  6  1952    32.0 Burkina Faso 
+##  7  1952    32.5 Guinea-Bissau
+##  8  1952    32.5 Yemen, Rep.  
+##  9  1952    33.0 Somalia      
+## 10  1952    33.6 Guinea       
+## # ... with 1,694 more rows
 ```
 
 # Resume lecture 
@@ -198,11 +356,24 @@ Return to guide at section 6.7.
 
 ```r
 gapminder %>%
-  filter(FILL_THIS_IN)
+  filter(pop>100000000)
 ```
 
 ```
-## Error in gapminder %>% filter(FILL_THIS_IN): could not find function "%>%"
+## # A tibble: 77 x 6
+##    country    continent  year lifeExp       pop gdpPercap
+##    <fct>      <fct>     <int>   <dbl>     <int>     <dbl>
+##  1 Bangladesh Asia       1987    52.8 103764241      752.
+##  2 Bangladesh Asia       1992    56.0 113704579      838.
+##  3 Bangladesh Asia       1997    59.4 123315288      973.
+##  4 Bangladesh Asia       2002    62.0 135656790     1136.
+##  5 Bangladesh Asia       2007    64.1 150448339     1391.
+##  6 Brazil     Americas   1972    59.5 100840058     4986.
+##  7 Brazil     Americas   1977    61.5 114313951     6660.
+##  8 Brazil     Americas   1982    63.3 128962939     7031.
+##  9 Brazil     Americas   1987    65.2 142938076     7807.
+## 10 Brazil     Americas   1992    67.1 155975974     6950.
+## # ... with 67 more rows
 ```
 
 2. Your turn: of those rows filtered from step 1., only take data from Asia.
@@ -210,11 +381,69 @@ gapminder %>%
 
 ```r
 gapminder %>%
-  filter(FILL_THIS_IN)
+  filter(pop>100000000) %>%
+  filter(continent=="Asia") #longer way
 ```
 
 ```
-## Error in gapminder %>% filter(FILL_THIS_IN): could not find function "%>%"
+## # A tibble: 52 x 6
+##    country    continent  year lifeExp       pop gdpPercap
+##    <fct>      <fct>     <int>   <dbl>     <int>     <dbl>
+##  1 Bangladesh Asia       1987    52.8 103764241      752.
+##  2 Bangladesh Asia       1992    56.0 113704579      838.
+##  3 Bangladesh Asia       1997    59.4 123315288      973.
+##  4 Bangladesh Asia       2002    62.0 135656790     1136.
+##  5 Bangladesh Asia       2007    64.1 150448339     1391.
+##  6 China      Asia       1952    44   556263527      400.
+##  7 China      Asia       1957    50.5 637408000      576.
+##  8 China      Asia       1962    44.5 665770000      488.
+##  9 China      Asia       1967    58.4 754550000      613.
+## 10 China      Asia       1972    63.1 862030000      677.
+## # ... with 42 more rows
+```
+
+```r
+gapminder %>%
+  filter(pop>100000000 & continent=="Asia") #shorter way
+```
+
+```
+## # A tibble: 52 x 6
+##    country    continent  year lifeExp       pop gdpPercap
+##    <fct>      <fct>     <int>   <dbl>     <int>     <dbl>
+##  1 Bangladesh Asia       1987    52.8 103764241      752.
+##  2 Bangladesh Asia       1992    56.0 113704579      838.
+##  3 Bangladesh Asia       1997    59.4 123315288      973.
+##  4 Bangladesh Asia       2002    62.0 135656790     1136.
+##  5 Bangladesh Asia       2007    64.1 150448339     1391.
+##  6 China      Asia       1952    44   556263527      400.
+##  7 China      Asia       1957    50.5 637408000      576.
+##  8 China      Asia       1962    44.5 665770000      488.
+##  9 China      Asia       1967    58.4 754550000      613.
+## 10 China      Asia       1972    63.1 862030000      677.
+## # ... with 42 more rows
+```
+
+```r
+gapminder %>%
+  filter(pop>100000000, continent=="Asia") #same same
+```
+
+```
+## # A tibble: 52 x 6
+##    country    continent  year lifeExp       pop gdpPercap
+##    <fct>      <fct>     <int>   <dbl>     <int>     <dbl>
+##  1 Bangladesh Asia       1987    52.8 103764241      752.
+##  2 Bangladesh Asia       1992    56.0 113704579      838.
+##  3 Bangladesh Asia       1997    59.4 123315288      973.
+##  4 Bangladesh Asia       2002    62.0 135656790     1136.
+##  5 Bangladesh Asia       2007    64.1 150448339     1391.
+##  6 China      Asia       1952    44   556263527      400.
+##  7 China      Asia       1957    50.5 637408000      576.
+##  8 China      Asia       1962    44.5 665770000      488.
+##  9 China      Asia       1967    58.4 754550000      613.
+## 10 China      Asia       1972    63.1 862030000      677.
+## # ... with 42 more rows
 ```
 
 3. Repeat 2, but take data from countries Brazil, and China. 
@@ -222,11 +451,65 @@ gapminder %>%
 
 ```r
 gapminder %>%
-  filter(FILL_THIS_IN)
+  filter(pop>100000000) %>%
+  filter(country=="Brazil" | country=="China")
 ```
 
 ```
-## Error in gapminder %>% filter(FILL_THIS_IN): could not find function "%>%"
+## # A tibble: 20 x 6
+##    country continent  year lifeExp        pop gdpPercap
+##    <fct>   <fct>     <int>   <dbl>      <int>     <dbl>
+##  1 Brazil  Americas   1972    59.5  100840058     4986.
+##  2 Brazil  Americas   1977    61.5  114313951     6660.
+##  3 Brazil  Americas   1982    63.3  128962939     7031.
+##  4 Brazil  Americas   1987    65.2  142938076     7807.
+##  5 Brazil  Americas   1992    67.1  155975974     6950.
+##  6 Brazil  Americas   1997    69.4  168546719     7958.
+##  7 Brazil  Americas   2002    71.0  179914212     8131.
+##  8 Brazil  Americas   2007    72.4  190010647     9066.
+##  9 China   Asia       1952    44    556263527      400.
+## 10 China   Asia       1957    50.5  637408000      576.
+## 11 China   Asia       1962    44.5  665770000      488.
+## 12 China   Asia       1967    58.4  754550000      613.
+## 13 China   Asia       1972    63.1  862030000      677.
+## 14 China   Asia       1977    64.0  943455000      741.
+## 15 China   Asia       1982    65.5 1000281000      962.
+## 16 China   Asia       1987    67.3 1084035000     1379.
+## 17 China   Asia       1992    68.7 1164970000     1656.
+## 18 China   Asia       1997    70.4 1230075000     2289.
+## 19 China   Asia       2002    72.0 1280400000     3119.
+## 20 China   Asia       2007    73.0 1318683096     4959.
+```
+
+```r
+gapminder %>%
+  filter(pop>100000000 & (country=="Brazil" | country=="China"))
+```
+
+```
+## # A tibble: 20 x 6
+##    country continent  year lifeExp        pop gdpPercap
+##    <fct>   <fct>     <int>   <dbl>      <int>     <dbl>
+##  1 Brazil  Americas   1972    59.5  100840058     4986.
+##  2 Brazil  Americas   1977    61.5  114313951     6660.
+##  3 Brazil  Americas   1982    63.3  128962939     7031.
+##  4 Brazil  Americas   1987    65.2  142938076     7807.
+##  5 Brazil  Americas   1992    67.1  155975974     6950.
+##  6 Brazil  Americas   1997    69.4  168546719     7958.
+##  7 Brazil  Americas   2002    71.0  179914212     8131.
+##  8 Brazil  Americas   2007    72.4  190010647     9066.
+##  9 China   Asia       1952    44    556263527      400.
+## 10 China   Asia       1957    50.5  637408000      576.
+## 11 China   Asia       1962    44.5  665770000      488.
+## 12 China   Asia       1967    58.4  754550000      613.
+## 13 China   Asia       1972    63.1  862030000      677.
+## 14 China   Asia       1977    64.0  943455000      741.
+## 15 China   Asia       1982    65.5 1000281000      962.
+## 16 China   Asia       1987    67.3 1084035000     1379.
+## 17 China   Asia       1992    68.7 1164970000     1656.
+## 18 China   Asia       1997    70.4 1230075000     2289.
+## 19 China   Asia       2002    72.0 1280400000     3119.
+## 20 China   Asia       2007    73.0 1318683096     4959.
 ```
 
 ## `mutate()` (10 min)
@@ -239,11 +522,25 @@ Let's get:
 
 ```r
 gapminder %>%
-  mutate(FILL_THIS_IN)
+  mutate(gdp=gdpPercap*pop) %>%
+  mutate(gdpBill=round(gdp/1e9,2))
 ```
 
 ```
-## Error in gapminder %>% mutate(FILL_THIS_IN): could not find function "%>%"
+## # A tibble: 1,704 x 8
+##    country    continent  year lifeExp      pop gdpPercap        gdp gdpBill
+##    <fct>      <fct>     <int>   <dbl>    <int>     <dbl>      <dbl>   <dbl>
+##  1 Afghanist~ Asia       1952    28.8  8425333      779.    6.57e 9    6.57
+##  2 Afghanist~ Asia       1957    30.3  9240934      821.    7.59e 9    7.59
+##  3 Afghanist~ Asia       1962    32.0 10267083      853.    8.76e 9    8.76
+##  4 Afghanist~ Asia       1967    34.0 11537966      836.    9.65e 9    9.65
+##  5 Afghanist~ Asia       1972    36.1 13079460      740.    9.68e 9    9.68
+##  6 Afghanist~ Asia       1977    38.4 14880372      786.    1.17e10   11.7 
+##  7 Afghanist~ Asia       1982    39.9 12881816      978.    1.26e10   12.6 
+##  8 Afghanist~ Asia       1987    40.8 13867957      852.    1.18e10   11.8 
+##  9 Afghanist~ Asia       1992    41.7 16317921      649.    1.06e10   10.6 
+## 10 Afghanist~ Asia       1997    41.8 22227415      635.    1.41e10   14.1 
+## # ... with 1,694 more rows
 ```
 
 Notice the backwards compatibility! No need for loops!
@@ -253,11 +550,25 @@ Try the same thing, but with `transmute` (drops all other variables).
 
 ```r
 gapminder %>%
-  transmute(FILL_THIS_IN)
+  transmute(gdp=gdpPercap*pop) %>%
+  transmute(gdpBill=round(gdp/1e9,2))
 ```
 
 ```
-## Error in gapminder %>% transmute(FILL_THIS_IN): could not find function "%>%"
+## # A tibble: 1,704 x 1
+##    gdpBill
+##      <dbl>
+##  1    6.57
+##  2    7.59
+##  3    8.76
+##  4    9.65
+##  5    9.68
+##  6   11.7 
+##  7   12.6 
+##  8   11.8 
+##  9   10.6 
+## 10   14.1 
+## # ... with 1,694 more rows
 ```
 
 The `if_else` function is useful for changing certain elements in a data frame.
@@ -267,16 +578,64 @@ Example: Suppose Canada's 1952 life expectancy was mistakenly entered as 68.8 in
 
 ```r
 gapminder %>%
-  mutate(FILL_THIS_IN)
+  filter(country=="Canada") %>%
+  filter(year==1952) %>%
+  mutate(lifeExp=if_else(lifeExp==68.75,70,lifeExp)) #this leaves just one row
 ```
 
 ```
-## Error in gapminder %>% mutate(FILL_THIS_IN): could not find function "%>%"
+## # A tibble: 1 x 6
+##   country continent  year lifeExp      pop gdpPercap
+##   <fct>   <fct>     <int>   <dbl>    <int>     <dbl>
+## 1 Canada  Americas   1952      70 14785584    11367.
+```
+
+```r
+gapminder %>%
+  mutate(lifeExp=if_else(country=="Canada" & year==1952 & lifeExp==68.75, 70, lifeExp)) #this keeps all rows - this is correct
+```
+
+```
+## # A tibble: 1,704 x 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.
+## # ... with 1,694 more rows
 ```
 
 Your turn: Make a new column called `cc` that pastes the country name followed by the continent, separated by a comma. (Hint: use the `paste` function with the `sep=", "` argument).
 
 
+```r
+gapminder %>%
+  mutate(cc=paste(country,continent,sep=", "))
+```
+
+```
+## # A tibble: 1,704 x 7
+##    country     continent  year lifeExp      pop gdpPercap cc               
+##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl> <chr>            
+##  1 Afghanistan Asia       1952    28.8  8425333      779. Afghanistan, Asia
+##  2 Afghanistan Asia       1957    30.3  9240934      821. Afghanistan, Asia
+##  3 Afghanistan Asia       1962    32.0 10267083      853. Afghanistan, Asia
+##  4 Afghanistan Asia       1967    34.0 11537966      836. Afghanistan, Asia
+##  5 Afghanistan Asia       1972    36.1 13079460      740. Afghanistan, Asia
+##  6 Afghanistan Asia       1977    38.4 14880372      786. Afghanistan, Asia
+##  7 Afghanistan Asia       1982    39.9 12881816      978. Afghanistan, Asia
+##  8 Afghanistan Asia       1987    40.8 13867957      852. Afghanistan, Asia
+##  9 Afghanistan Asia       1992    41.7 16317921      649. Afghanistan, Asia
+## 10 Afghanistan Asia       1997    41.8 22227415      635. Afghanistan, Asia
+## # ... with 1,694 more rows
+```
 
 These functions we've seen are called __vectorized functions__.
 
@@ -290,10 +649,51 @@ If there's time remaining, we'll practice with these three exercises. I'll give 
 
 1. Take all countries in Europe that have a GDP per capita greater than 10000, and select all variables except `gdpPercap`. (Hint: use `-`).
 
+
+```r
+gapminder %>%
+  filter(continent=="Europe", gdpPercap>10000) %>%
+  select(-gdpPercap)
+```
+
+```
+## # A tibble: 214 x 5
+##    country continent  year lifeExp     pop
+##    <fct>   <fct>     <int>   <dbl>   <int>
+##  1 Austria Europe     1962    69.5 7129864
+##  2 Austria Europe     1967    70.1 7376998
+##  3 Austria Europe     1972    70.6 7544201
+##  4 Austria Europe     1977    72.2 7568430
+##  5 Austria Europe     1982    73.2 7574613
+##  6 Austria Europe     1987    74.9 7578903
+##  7 Austria Europe     1992    76.0 7914969
+##  8 Austria Europe     1997    77.5 8069876
+##  9 Austria Europe     2002    79.0 8148312
+## 10 Austria Europe     2007    79.8 8199783
+## # ... with 204 more rows
+```
+
+
 2. Take the first three columns, and extract the names.
+
+
+```r
+names(gapminder %>%
+  filter(continent=="Europe", gdpPercap>10000) %>%
+  select(-gdpPercap))[1:3]
+```
+
+```
+## [1] "country"   "continent" "year"
+```
+
 
 3. Of the `iris` data frame, take all columns that start with the word "Petal". 
     - Hint: take a look at the "Select helpers" documentation by running the following code: `?tidyselect::select_helpers`.
+    
+
+    
+    
     
 4. Convert the population to a number in billions.
 

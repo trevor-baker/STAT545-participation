@@ -5,3 +5,21 @@ date: "19/09/2019"
 output: html_document
 ---
 
+- see file cm006-exercise.Rmd for most of the work done today
+
+```{r}
+library(gapminder)
+
+
+#diff of tibble vs df
+######################
+
+#print gapminder as tibble - less rows show, shows classes
+print(gapminder)
+
+#print gapminder as dataframe - more rows, no info about it
+print(as.data.frame(gapminder)) #this needs to be done down in console, not here in Rmd to see the difference
+
+```
+
+
