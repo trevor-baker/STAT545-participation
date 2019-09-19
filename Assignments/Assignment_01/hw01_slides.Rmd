@@ -95,6 +95,7 @@ big.incr <- as.character( gm2$country[1] ) #which country had largest increase?
 big.decr <- as.character( gm2$country[nrow(gm2)] ) #which country had largest decrease?
 
 {
+
   plot(x=gm$year[gm$country==big.incr],
        y=gm$gdpPercap[gm$country==big.incr],
        ylim=c(0,120000),
@@ -133,7 +134,7 @@ big.decr <- as.character( gm2$country[nrow(gm2)] ) #which country had largest de
          legend=c("Norway", "Kuwait", "Canada",big.incr,"China",big.decr),
          pch=21,
          pt.bg=c("blue","orange","black","lightgreen","yellow","red"))
-  
+
   
 }
 ```
