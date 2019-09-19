@@ -243,7 +243,8 @@ names(gapminder %>%
     - Hint: take a look at the "Select helpers" documentation by running the following code: `?tidyselect::select_helpers`.
     
 ```{r}
-
+iris %>%
+  select(starts_with("Petal"))
 
 ```
     
@@ -251,7 +252,19 @@ names(gapminder %>%
     
 4. Convert the population to a number in billions.
 
+```{r}
+gapminder %>%
+  mutate(pop=pop/1e9)
+```
+
+
 5. Filter the rows of the iris dataset for Sepal.Length >= 4.6 and Petal.Width >= 0.5.
+
+```{r}
+iris %>%
+  filter(Sepal.Length>=4.6, Petal.Width>=0.5)
+```
+
 
 Exercises 3. and 5. are from [r-exercises](https://www.r-exercises.com/2017/10/19/dplyr-basic-functions-exercises/).
 
