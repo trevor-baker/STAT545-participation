@@ -9,13 +9,14 @@ output: html_document
 
 library(gapminder)
 library(tidyverse)
+library(ggplot2)
 
 ```
 
 ##Part 1
 
 ###1.1
-```{r}
+```{r 1_1}
 
 gapminder %>%
   filter(year>=1970 & year<1980 & (country=="China" | country=="Canada" | country=="United States"))
@@ -24,7 +25,7 @@ gapminder %>%
 
 
 ###1.2
-```{r}
+```{r 1_2}
 gapminder %>%
   filter(year>=1970 & year<1980 & (country=="China" | country=="Canada" | country=="United States")) %>%
   select(country, gdpPercap)
@@ -32,8 +33,35 @@ gapminder %>%
 
 
 ###1.3
-```{r}
+```{r 1_3}
+
 gapminder %>%
-  filter()
+  group_by(country) %>%
+  mutate(lifeExp.incr=lifeExp-lag(lifeExp) ) %>%
+  filter(lifeExp.incr<0)
+
+```
+
+###1.4
+```{r 1_4}
+
+gapminder %>%
+  group_by(country) %>%
+  summarize(max.gdp=max(gdpPercap))
+
+```
+
+
+###1.5
+```{r}
+
+gapminder %>%
+  filter(country=="Canada") %>%
+  ggplot(aes(x=gdpPercap,y=lifeExp)) + 
+            geom_point() +
+            scale_x_log10("GDP per capita", labels = scales::dollar_format()) +
+            ylab("Life expectancy") +
+            theme_bw()
+
 ```
 
