@@ -1,0 +1,39 @@
+---
+title: "Assignment 2"
+author: "Trevor Baker"
+date: "19/09/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+library(gapminder)
+library(tidyverse)
+
+```
+
+##Part 1
+
+###1.1
+```{r}
+
+gapminder %>%
+  filter(year>=1970 & year<1980 & (country=="China" | country=="Canada" | country=="United States"))
+
+```
+
+
+###1.2
+```{r}
+gapminder %>%
+  filter(year>=1970 & year<1980 & (country=="China" | country=="Canada" | country=="United States")) %>%
+  select(country, gdpPercap)
+```
+
+
+###1.3
+```{r}
+gapminder %>%
+  filter()
+```
+
