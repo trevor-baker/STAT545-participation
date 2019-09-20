@@ -135,14 +135,14 @@ __Plot 1__
 ```{r ex3_plot1}
 
 gapminder %>%
-  ggplot(aes(x=pop, y=lifeExp, size=gdpPercap, colour=continent)) +
-    geom_point() +
+  ggplot(aes(x=pop, y=lifeExp, size=gdpPercap, fill=continent)) +
+    geom_point(pch=21,colour="black") +
     scale_x_log10("Population", labels=scales::comma) +
     ylab("Life expectancy") +
     theme_bw() +
-    scale_size_continuous(name="GDP per capita (US $, infl. adj.)") +
-    scale_colour_discrete(name="Continent") +
-    guides(colour = guide_legend(override.aes = list(size=6)))
+    scale_size_continuous(name="GDP per capita (US $, infl. adj.)", range=c(0.5,10)) +
+    scale_fill_discrete(name="Continent") +
+    guides(fill = guide_legend(override.aes = list(size=8)))
 
 
 ```
