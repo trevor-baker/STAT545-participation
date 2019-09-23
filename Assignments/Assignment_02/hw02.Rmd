@@ -7,11 +7,13 @@ output:
     keep_md: true
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, message=F}
 
 library(gapminder)
 library(tidyverse)
 library(ggplot2)
+library(knitr)
+library(DT)
 
 ```
 
@@ -22,38 +24,42 @@ library(ggplot2)
 
 __1.1__
 ```{r 1_1}
-
-gapminder %>%
-  filter(year>=1970 & year<1980 & (country=="China" | country=="Canada" | country=="United States"))
-
+knitr::kable(
+  gapminder %>%
+    filter(between(year,1970,1980) & (country=="China" | country=="Canada" | country=="United States"))
+)
 ```
 
 
 __1.2__
 ```{r 1_2}
-gapminder %>%
-  filter(year>=1970 & year<1980 & (country=="China" | country=="Canada" | country=="United States")) %>%
-  select(country, gdpPercap)
+knitr::kable(
+  gapminder %>%
+    filter(between(year,1970,1980) & (country=="China" | country=="Canada" | country=="United States")) %>%
+    select(country, gdpPercap)
+)
 ```
 
 
 __1.3__
 ```{r 1_3}
 
-gapminder %>%
-  group_by(country) %>%
-  mutate(lifeExp.incr=lifeExp-lag(lifeExp) ) %>%
-  filter(lifeExp.incr<0)
-
+DT::datatable(
+  gapminder %>%
+    group_by(country) %>%
+    mutate(lifeExp.incr=lifeExp-lag(lifeExp) ) %>%
+    filter(lifeExp.incr<0)
+)
 ```
 
 __1.4__
 ```{r 1_4}
 
-gapminder %>%
-  group_by(country) %>%
-  summarize(max.gdp=max(gdpPercap))
-
+DT::datatable(
+  gapminder %>%
+    group_by(country) %>%
+    summarize(max.gdp=max(gdpPercap))
+)
 ```
 
 
@@ -81,36 +87,43 @@ I have chosen life expectancy and continent to summarize here.
 There are 5 continents in the dataset:
 ```{r unique_cont}
 #display all continents - kind of useles
-gapminder %>%
-  select(continent) %>%
-  unique()
+knitr::kable(
+  gapminder %>%
+    select(continent) %>%
+    unique()
+)
 ```
 
 
 Here are some summary stats on global life expectancies:
 ```{r global_le_table}
 #display range of lifeExp data by continent
-gapminder %>%
-  select(lifeExp) %>%
-  summarize(min.lifeExp=min(lifeExp)%>% round(digits=1),
-            median.lifeExp=median(lifeExp)%>% round(digits=1),
-            mean.lifeExp=mean(lifeExp)%>% round(digits=1),
-            max.lifeExp=max(lifeExp) %>% round(digits=1)) 
+knitr::kable(
+  gapminder %>%
+    select(lifeExp) %>%
+    summarize(min.lifeExp=min(lifeExp)%>% round(digits=1),
+              median.lifeExp=median(lifeExp)%>% round(digits=1),
+              mean.lifeExp=mean(lifeExp)%>% round(digits=1),
+              max.lifeExp=max(lifeExp) %>% round(digits=1)) 
+)
 ```
 
-It is more informative to see these summary statistics divided up by country:
+It is more informative to see these summary statistics divided up by continent:
 ```{r cont_le_table}
 #display range of lifeExp data by continent
-gapminder %>%
-  select(continent, lifeExp) %>%
-  group_by(continent) %>%
-  summarize(min.lifeExp=min(lifeExp)%>% round(digits=1),
-            median.lifeExp=median(lifeExp)%>% round(digits=1),
-            mean.lifeExp=mean(lifeExp)%>% round(digits=1),
-            max.lifeExp=max(lifeExp) %>% round(digits=1)) 
+knitr::kable(
+  gapminder %>%
+    select(continent, lifeExp) %>%
+    group_by(continent) %>%
+    summarize(min.lifeExp=min(lifeExp)%>% round(digits=1),
+              median.lifeExp=median(lifeExp)%>% round(digits=1),
+              mean.lifeExp=mean(lifeExp)%>% round(digits=1),
+              max.lifeExp=max(lifeExp) %>% round(digits=1)) 
+)
 ```
 
-It's probably even more informative to see them graphed
+
+It's probably even more informative to see them graphed:
 ```{r cont_le_boxplot}
 
 #display range of both variables via boxplot
