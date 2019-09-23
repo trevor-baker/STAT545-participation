@@ -99,29 +99,56 @@ knitr::kable(
 
 Here are some summary stats on global life expectancies:
 ```{r global_le_table}
-#display range of lifeExp data by continent
+#display range of lifeExp data globally:
+
+# #method 1
+# knitr::kable(
+#   gapminder %>%
+#     select(lifeExp) %>%
+#     summarize(min.lifeExp=min(lifeExp)%>% round(digits=1),
+#               Q1.lifeExp=quantile(lifeExp, 0.25) %>% round(digits=1),
+#               median.lifeExp=median(lifeExp)%>% round(digits=1),
+#               mean.lifeExp=mean(lifeExp)%>% round(digits=1),
+#               Q3.lifeExp=quantile(lifeExp, 0.75) %>% round(digits=1),
+#               max.lifeExp=max(lifeExp) %>% round(digits=1)) 
+# )
+
+#method 2
 knitr::kable(
   gapminder %>%
     select(lifeExp) %>%
-    summarize(min.lifeExp=min(lifeExp)%>% round(digits=1),
-              median.lifeExp=median(lifeExp)%>% round(digits=1),
-              mean.lifeExp=mean(lifeExp)%>% round(digits=1),
-              max.lifeExp=max(lifeExp) %>% round(digits=1)) 
+    summary()
 )
+
 ```
 
 It is more informative to see these summary statistics divided up by continent:
 ```{r cont_le_table}
 #display range of lifeExp data by continent
+
+# #method 1
+# knitr::kable(
+#   gapminder %>%
+#     select(continent, lifeExp) %>%
+#     group_by(continent) %>%
+#     summarize(min.lifeExp=min(lifeExp)%>% round(digits=1),
+#               Q1.lifeExp=quantile(lifeExp, 0.25) %>% round(digits=1),
+#               median.lifeExp=median(lifeExp)%>% round(digits=1),
+#               mean.lifeExp=mean(lifeExp)%>% round(digits=1),
+#               Q3.lifeExp=quantile(lifeExp, 0.75) %>% round(digits=1),
+#               max.lifeExp=max(lifeExp) %>% round(digits=1)) 
+# )
+
+#method 2
 knitr::kable(
   gapminder %>%
     select(continent, lifeExp) %>%
     group_by(continent) %>%
-    summarize(min.lifeExp=min(lifeExp)%>% round(digits=1),
-              median.lifeExp=median(lifeExp)%>% round(digits=1),
-              mean.lifeExp=mean(lifeExp)%>% round(digits=1),
-              max.lifeExp=max(lifeExp) %>% round(digits=1)) 
+    summarize(summ=list(c(summary(lifeExp) %>% round(digits=1)))) %>%
+    unnest_wider(summ) 
 )
+
+
 ```
 
 
@@ -186,24 +213,28 @@ gapminder %>%
 __Evaluate extra code__
 
 Original code:
-```{r}
+```{r extra_old}
 filter(gapminder, country == c("Rwanda", "Afghanistan"))
 ```
 
 The analyst's intent was to get all rows of data for Rwanda and Afghanistan. They did not succeed because they provided a vector with length of 2 to the filter function, which was run through sequentially by R because R recycles vectors. The code's output was to retrieve the first result for Rwanda, the second result for Afghanistan, the third result for Rwanda, and so on.
 
 A better way to do this would be to use filter to select all rows where the country is Rwanda or the country is Afghanistan:
-```{r}
+```{r extra_new}
+DT::datatable(
+  filter(gapminder, country == "Rwanda" | country=="Afghanistan")  
+)
 
-filter(gapminder, country == "Rwanda" | country=="Afghanistan")
 
 ```
 
 
 The same code can be written using the pipe operator:
-```{r}
+```{r extra_new_pipe}
+DT::datatable(
+  gapminder %>%
+    filter(country == "Rwanda" | country=="Afghanistan")  
+)
 
-gapminder %>%
-  filter(country == "Rwanda" | country=="Afghanistan")
 ```
 
