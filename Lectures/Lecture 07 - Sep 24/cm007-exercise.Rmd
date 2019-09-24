@@ -1,0 +1,118 @@
+---
+title: "cm007 Exercises: Practice with `dplyr`"
+author: "Trevor Baker"
+date: "24/09/2019"
+output: 
+  html_document:
+    keep_md: true
+    theme: paper
+---
+
+<!---The following chunk allows errors when knitting--->
+
+```{r allow errors, echo = FALSE}
+knitr::opts_chunk$set(error = TRUE, warning = FALSE)
+```
+
+```{r}
+install.packages("tsibble")
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(tsibble))
+```
+
+
+This worksheet contains exercises aimed for practice with `dplyr`. 
+
+
+1. (a) What's the minimum life expectancy for each continent and each year? (b) Add the corresponding country to the tibble, too. (c) Arrange by min life expectancy.
+
+```{r}
+gapminder %>% 
+  group_by(continent, year) %>% 
+  summarize(min_life = min(lifeExp),
+            country = country[which(lifeExp==min_life)]) %>%
+  arrange(min_life)
+
+```
+
+2. Calculate the growth in population since the first year on record _for each country_ by rearranging the following lines, and filling in the `FILL_THIS_IN`. Here's another convenience function for you: `dplyr::first()`. 
+
+```
+mutate(rel_growth = FILL_THIS_IN) %>% 
+arrange(FILL_THIS_IN) %>% 
+gapminder %>% 
+DT::datatable()
+group_by(country) %>% 
+```
+
+```{r}
+#method 1 - using index[1]
+gapminder %>%
+  group_by(country) %>% 
+  mutate(rel_growth = (pop-pop[1])/pop) %>% 
+  arrange(year) %>% 
+  DT::datatable()
+  
+#method 2 - using first()
+gapminder %>%
+  group_by(country) %>% 
+  arrange(year) %>% 
+  mutate(rel_growth = (pop-first(pop))/pop) %>% 
+  DT::datatable()
+
+
+```
+
+```{r}
+
+```
+
+
+3. Determine the country that experienced the sharpest 5-year drop in life expectancy, in each continent, sorted by the drop, by rearranging the following lines of code. Ensure there are no `NA`'s. Instead of using `lag()`, use the convenience function provided by the `tsibble` package, `tsibble::difference()`:
+
+```
+drop_na() %>% 
+ungroup() %>% 
+arrange(year) %>% 
+filter(inc_life_exp == min(inc_life_exp)) %>% 
+gapminder %>% 
+mutate(inc_life_exp = FILL_THIS_IN) %>% 
+arrange(inc_life_exp) %>% 
+group_by(country) %>% 
+group_by(continent) %>% 
+knitr::kable()
+```
+
+```{r}
+
+#method 1
+gapminder %>% 
+  group_by(country) %>% 
+  arrange(year) %>% 
+  mutate(inc_life_exp = tsibble::difference(lifeExp)) %>% 
+  drop_na() %>% #have to drop NAs before we filter
+  ungroup() %>% 
+  group_by(continent) %>%   
+  filter(inc_life_exp == min(inc_life_exp)) %>% 
+  arrange(inc_life_exp) %>%
+  knitr::kable()
+
+
+#method 2
+gapminder %>% 
+  group_by(country) %>% 
+  arrange(year) %>% 
+  mutate(inc_life_exp = tsibble::difference(lifeExp)) %>% 
+  #drop_na() %>% #have to drop NAs before we filter
+  ungroup() %>% 
+  group_by(continent) %>%   
+  filter(inc_life_exp == min(inc_life_exp, na.rm=T)) %>% #drop NAs with na.rm=T
+  arrange(inc_life_exp) %>%
+  knitr::kable()
+
+
+```
+
+
+

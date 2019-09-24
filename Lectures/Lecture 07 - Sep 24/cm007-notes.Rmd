@@ -1,0 +1,95 @@
+---
+title: "cm007-notes"
+author: "Trevor Baker"
+date: "24/09/2019"
+output: github_document
+---
+
+```{r setup, message=F, warning=F, echo=F}
+
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(lubridate))
+suppressPackageStartupMessages(library(tsibble))
+suppressPackageStartupMessages(library(here))
+library(DT)
+
+#wrong because a<3 not vectorized
+tibble(a = 1:4) %>% 
+  mutate(b = (if (a < 3) "small" else "big"))
+
+#two possible ways to do it
+tibble(a = 1:4) %>% 
+  mutate(c = sapply(a, function(x) if (x < 3) "small" else "big"),
+         d = purrr::map_chr(a, ~  (if(.x < 3) "small" else "big")))
+
+
+```
+
+Diff between summarize and mutate:
+```{r}
+
+library(gapminder)
+gapminder %>%
+  summarize(mu = mean(lifeExp)) #one column, one row
+  
+gapminder %>%
+  mutate(mu = mean(lifeExp)) #mu value tacked on as column, all rows still there
+  
+
+```
+
+
+`group_by`
+can group by a novel variable, adding a new column to the tibble:
+```{r}
+
+gapminder %>%
+  group_by(small.lifeExp= lifeExp < 60)
+
+```
+
+Add identifying column to your group_by tibble:
+```{r}
+
+gapminder %>%
+  mutate(group=paste(continent,year,sep="_")) %>%
+           group_by(continent, year)
+
+```
+
+_Window functions_
+take in vector, return a vector that depends on the entire vector
+e.g. `rank()` - you can't get the right output going linearly along vector, need to look at whole
+whereas `round()` just works linearly along vector
+
+
+`lubridate`
+```{r}
+
+ymd <- lubridate::mdy("Sep 24. 2019", 
+               "09 25 19", 
+               "Sept 26 2019",
+               "Septem 27 2019",
+               "September 28 2019")
+
+#lubridate does not do year-month format
+tsibble::yearmonth(ymd)
+
+
+```
+
+`tsibble`
+can create tsibble object like so, give date column as "index"
+```{r}
+
+energy <- here::here("data", "daily_consumption.csv") %>% 
+  read_csv()
+energy <- as_tsibble(energy)
+
+
+```
+
+
+
+
