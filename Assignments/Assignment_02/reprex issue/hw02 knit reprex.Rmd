@@ -1,0 +1,14 @@
+---
+title: "hw02 reprex"
+author: "Trevor Baker"
+date: "23/09/2019"
+output: pdf_document
+---
+
+```{r}
+library(gapminder)
+library(DT)
+DT::datatable(gapminder)
+
+```
+
