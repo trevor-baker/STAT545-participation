@@ -82,13 +82,13 @@ gapminder %>%
 ---
 
 ## EXERCISE 2
-#### Explore individal variables with 'dplyr'
+#### Explore individual variables with 'dplyr'
 
 I have chosen life expectancy and continent to summarize here.
 
 There are 5 continents in the dataset:
 ```{r unique_cont}
-#display all continents - kind of useles
+#display all continents - kind of useless
 knitr::kable(
   gapminder %>%
     select(continent) %>%
