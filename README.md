@@ -6,14 +6,14 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 
 | Lecture # |   Date   | Links to folders | Links to html pages | 
 |-----------|:---------|:----------------:|:-------------:|
-|     1     | Sept 3   | _NA_             |_NA_ |
-|     2     | Sept 5   | [click here][1]  | [notes][101] [exercise1][102] [exercise3][103] |
-|     3     | Sept 10  | [click here][2]  |
-|     4     | Sept 12  | [click here][3]  |
-|     5     | Sept 17  | [click here][4]  |
-|     6     | Sept 19  | [click here][5]  |
-|     7     | Sept 24  | [click here][6]  |
-|     8     | Sept 26  | [click here][7]  |
+|     1     | Sept 3   | _NA_             | _NA_ |
+|     2     | Sept 5   | [click here][1]  | _NA_ |
+|     3     | Sept 10  | [click here][2]  | [notes][101], [rmd exploration][102], [making slides][103] |
+|     4     | Sept 12  | [click here][3]  | [notes][104] |
+|     5     | Sept 17  | [click here][4]  | [notes][105], [geom_ worksheet][106] |
+|     6     | Sept 19  | [click here][5]  | [notes][107], [dplyr exercise][108] |
+|     7     | Sept 24  | [click here][6]  | [notes][109], [dplyr exercise 2][110] |
+|     8     | Sept 26  | [click here][7]  | [notes][111], [ggplot exercise][112] |
 
 [1]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_02-Sep05>
 [2]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_03-Sep10>
@@ -23,24 +23,18 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 [6]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_07-Sep24>
 [7]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_08-Sep26>
 
-Here are my html files:
-
 [101]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/navigating_github.html>
 [102]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/rmd_exploration.html> 
 [103]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/slide_exploration.html>
-[Lecture 4, notes](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_04-Sep12/lec4_notes.html)
-[Lecture 5, notes](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_05-Sep17/Lec5_notes.html)
-[Lecture 5, worksheet](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_05-Sep17/Lec05_worksheet.html)
-[Lecture 6, notes](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_06-Sep19/Lec06_notes.html)
-[Lecture 6, exercise](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_06-Sep19/cm006-exercise.html)
-[Lecture 7, notes](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_07-Sep24/cm007-notes.html)
-[Lecture 7, exercise](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_07-Sep24/cm007-exercise.html)
-
-
-
-
-
-
+[104]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_04-Sep12/lec4_notes.html>
+[105]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_05-Sep17/Lec5_notes.html>
+[106]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_05-Sep17/Lec05_worksheet.html>
+[107]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_06-Sep19/Lec06_notes.html>
+[108]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_06-Sep19/cm006-exercise.html>
+[109]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_07-Sep24/cm007-notes.html>
+[110]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_07-Sep24/cm007-exercise.html>
+[111]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_08-Sep26/cm008-notes.html>
+[112]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_08-Sep26/cm008-exercise.html>
 
 
 ## Who am I?
