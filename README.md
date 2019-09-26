@@ -4,10 +4,10 @@
 
 This repository holds all of my work from in-class activities during _STAT 545_ lectures during the __Fall 2019__ semester at _UBC_. My in-class work and notes are organized in folders by lecture. Here is my work to date:
 
-| Lecture # |   Date   | Links to my work |
-|-----------|:---------|:----------------:|
-|     1     | Sept 3   | _NA_             |
-|     2     | Sept 5   | [click here][1]  |
+| Lecture # |   Date   | Links to folders | Links to html pages | 
+|-----------|:---------|:----------------:|:-------------:|
+|     1     | Sept 3   | _NA_             |_NA_ |
+|     2     | Sept 5   | [click here][1]  | [notes][101] [exercise1][102] [exercise3][103] |
 |     3     | Sept 10  | [click here][2]  |
 |     4     | Sept 12  | [click here][3]  |
 |     5     | Sept 17  | [click here][4]  |
@@ -25,10 +25,9 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 
 Here are my html files:
 
-[Lecture 3, Navigating github](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/navigating_github.html)
-
-[Lecture 3, rmd exploration](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/rmd_exploration.html) 
-[Lecture 3, slide creation](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/slide_exploration.html)
+[101]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/navigating_github.html>
+[102]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/rmd_exploration.html> 
+[103]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/slide_exploration.html>
 [Lecture 4, notes](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_04-Sep12/lec4_notes.html)
 [Lecture 5, notes](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_05-Sep17/Lec5_notes.html)
 [Lecture 5, worksheet](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_05-Sep17/Lec05_worksheet.html)
