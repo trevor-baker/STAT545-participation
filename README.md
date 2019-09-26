@@ -38,10 +38,10 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 [112]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_08-Sep26/cm008_exercise.html>
 
 ### Homework assignments:
-| Assignment # |   Date   | Links to folders  | Links to html pages | 
-|--------------|:---------|:-----------------:|:--------------------|
-|     1        | Sept 17  | [click here][201] | [Slides][301] |
-|     2        | Sept 24  | [click here][202] | [Assignment 2][302] |
+| Assignment # |   Date   | Links to folders  | Links to html pages             | 
+|--------------|:---------|:-----------------:|:--------------------------------|
+|     1        | Sept 17  | [click here][201] | [making basic slides][301] |
+|     2        | Sept 24  | [click here][202] | [dplyr and basic plotting][302] |
 |     3        | Oct 3    | [click here][203] |  |
 |     4        | Oct 10   | [click here][204] |  |
 |     5        | Oct 17   | [click here][205] |  |
@@ -54,7 +54,7 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 
 [301]: <https://stat545-ubc-hw-2019-20.github.io/stat545-hw-trevor-baker/Assignments/Assignment_01/hw01_slides.html>
 [302]: <https://stat545-ubc-hw-2019-20.github.io/stat545-hw-trevor-baker/Assignments/Assignment_02/hw02.html>
-[303]: <https://stat545-ubc-hw-2019-20.github.io/stat545-hw-trevor-baker/Assignments/Assignment_03/hw03.html>
+[303]: <https://stat545-ubc-hw-2019-20.github.io/stat545-hw-trevor-baker/Assignments/Assignment_03/hw03_dplyr.html>
 [304]: <https://stat545-ubc-hw-2019-20.github.io/stat545-hw-trevor-baker/Assignments/Assignment_04/hw04.html>
 [305]: <https://stat545-ubc-hw-2019-20.github.io/stat545-hw-trevor-baker/Assignments/Assignment_05/hw05.html>
 
