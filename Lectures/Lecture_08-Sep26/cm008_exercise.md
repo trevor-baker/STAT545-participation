@@ -51,7 +51,7 @@ ggplot(mpg, aes(cty, hwy)) +
 ```r
 #jittering is random, so each run has different offset
 
-#or sole overlap by using alpha for transparency without jittering
+#or solve overlap by using alpha for transparency without jittering
 ggplot(mpg, aes(cty, hwy)) + 
   geom_point(alpha=0.1)
 ```
@@ -95,7 +95,7 @@ gapminder %>%
 gapminder %>%
   #group_by(country) %>%
   ggplot(aes(year, lifeExp, group=country, colour=country=="Rwanda")) +
-  scale_colour_discrete("", labels=c("Other","Rwanda")) +
+  scale_colour_manual("", labels=c("Other","Rwanda"), values=c("grey","red")) +
   geom_line(alpha=0.4) #add alpha so overlap is not so bad
 ```
 
@@ -188,8 +188,13 @@ Instead of alpha transparency, suppose you're wanting to fix the overplotting is
 
 
 ```r
+# #original
+# ggplot(gapminder) +
+#   geom_point(aes(gdpPercap, lifeExp, size=0.1)) +
+#   scale_x_log10(labels = scales::dollar_format())
+
 ggplot(gapminder) +
-  geom_point(aes(gdpPercap, lifeExp, size=0.1)) +
+  geom_point(aes(gdpPercap, lifeExp), size=0.1) +
   scale_x_log10(labels = scales::dollar_format())
 ```
 
@@ -207,18 +212,39 @@ The following mock data set marks the (x,y) position of a caribou at four time p
 
 
 ```r
-tribble(
-  ~time, ~x, ~y,
-  1, 0.3, 0.3,
-  2, 0.8, 0.7,
-  3, 0.5, 0.9,
-  4, 0.4, 0.5
-) %>% 
-  ggplot(aes(x, y)) + 
-  geom_line()
+# #original
+# tribble(
+#   ~time, ~x, ~y,
+#   1, 0.3, 0.3,
+#   2, 0.8, 0.7,
+#   3, 0.5, 0.9,
+#   4, 0.4, 0.5
+# ) %>% 
+#   ggplot(aes(x, y)) + 
+#   geom_line()
+
+#this 2 step works, first to tib
+tib <- as_tsibble(
+  as_tibble(
+    data.frame(time=c(1,2,3,4), 
+        x=c(0.3,0.8,0.5,0.4), 
+        y=c(0.3,0.7,0.9,0.5))),
+        index=time) 
+ggplot(tib,aes(x, y)) +
+  geom_path(arrow=arrow(angle=20,length=unit(0.1,"inches"),type="closed")) +
+  geom_text(aes(x,y,label=time))
 ```
 
 ![](cm008_exercise_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+
+```r
+# #cant get it to work with piping
+# as_tsibble(
+#   data.frame(time=c(1,2,3,4), x=c(0.3,0.8,0.5,0.4), y=c(0.3,0.7,0.9,0.5)),  index=time) %>%
+# ggplot(aes(x, y)) +
+#   geom_path(arrow=arrow(angle=20,length=unit(0.1,"inches"),type="closed")) +
+#   geom_text(aes(x,y,label=time))
+```
 
 ## Exercise 5: Life expectancies in Africa
 
@@ -228,11 +254,23 @@ Fix the plot so that you can actually see the data points. Be sure to solve the 
 
 
 ```r
+# gapminder %>% 
+#   filter(continent == "Americas") %>% 
+#   ggplot(aes(country, lifeExp)) + 
+#   geom_point() +
+#   geom_boxplot()
+
+# #this uses rotated text, so not as instructed
+# gapminder %>% 
+#   filter(continent == "Americas") %>% 
+#   ggplot(aes(x=country, y=lifeExp)) + 
+#   geom_jitter() +
+#   theme(axis.text.x = element_text(angle = 90))
+
 gapminder %>% 
   filter(continent == "Americas") %>% 
-  ggplot(aes(country, lifeExp)) + 
-  geom_point() +
-  geom_boxplot()
+  ggplot(aes(y=country, x=lifeExp)) + 
+  geom_jitter()
 ```
 
 ![](cm008_exercise_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
@@ -241,16 +279,50 @@ gapminder %>%
 
 We're starting with the same plot as above, but instead of the points + boxplot, try a ridge plot instead using `ggridges::geom_density_ridges()`, and adjust the `bandwidth`.
 
+__Bandwidth=1__
 
 ```r
-gapminder %>% 
-  filter(continent == "Americas") %>% 
-  ggplot(aes(country, lifeExp)) + 
-  geom_point() +
-  geom_boxplot()
+# gapminder %>% 
+#   filter(continent == "Americas") %>% 
+#   ggplot(aes(country, lifeExp)) + 
+#   geom_point() +
+#   geom_boxplot()
+
+
+gapminder %>%
+  filter(continent == "Americas") %>%
+  ggplot(aes(y=country, x=lifeExp)) +
+  ggridges::geom_density_ridges(bandwidth=1)
 ```
 
 ![](cm008_exercise_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+
+__Bandwidth=3__
+
+ - smoother
+
+```r
+gapminder %>%
+  filter(continent == "Americas") %>%
+  ggplot(aes(y=country, x=lifeExp)) +
+  ggridges::geom_density_ridges(bandwidth=3)
+```
+
+![](cm008_exercise_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+
+__Bandwidth=6__
+
+ - even smoother
+
+```r
+gapminder %>%
+  filter(continent == "Americas") %>%
+  ggplot(aes(y=country, x=lifeExp)) +
+  ggridges::geom_density_ridges(bandwidth=6)
+```
+
+![](cm008_exercise_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+
 
 ## Exercise 6: Bar plot madness
 
@@ -263,13 +335,24 @@ gapminder %>%
 
 
 ```r
+# mtcars %>% 
+#   mutate(transmission = if_else(am == 0, "automatic", "manual")) %>% 
+#   ggplot(aes(cyl)) +
+#   geom_bar(aes(colour = transmission))
+
 mtcars %>% 
   mutate(transmission = if_else(am == 0, "automatic", "manual")) %>% 
-  ggplot(aes(cyl)) +
-  geom_bar(aes(colour = transmission))
+  mutate(prop=1/length(cyl)) %>%
+  group_by(cyl,transmission) %>%
+  summarize(sum_prop=sum(prop)) %>%
+    ggplot(aes(x=cyl, y=sum_prop,fill = transmission)) +
+    geom_col(position = "dodge") +
+    scale_x_continuous(name="Cylinders", breaks=c(4,6,8), labels=c("4","6","8")) +
+    scale_fill_manual(values=c("darkblue","orange")) +
+    labs(fill="Transmission", y="Proportion")
 ```
 
-![](cm008_exercise_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](cm008_exercise_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
 
 ### 6(b) Bar heights already calculated
 
@@ -295,15 +378,12 @@ Fix the following bar plot so that it shows these counts.
 
 
 ```r
-ggplot(hair, aes(Hair, n)) +
-  geom_bar()
+ggplot(hair, aes(Hair, n, fill=Hair)) +
+  geom_col() +
+  scale_fill_manual(values=c("black","khaki2","darkgoldenrod4","darkorange3"))
 ```
 
-```
-## Error: stat_count() must not be used with a y aesthetic.
-```
-
-![](cm008_exercise_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+![](cm008_exercise_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
 
 ## Exercise 7: Tiling
 
@@ -342,10 +422,10 @@ Fix the following plot so that it shows a filled-in square for each combination.
 
 ```r
 ggplot(hair_eye, aes(Hair, Eye)) +
-  geom_point(aes(colour = n))
+  geom_point(aes(fill = n), shape=22, cex=16)
 ```
 
-![](cm008_exercise_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+![](cm008_exercise_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
 
 By the way, `geom_count()` is like `geom_bar()`: it counts the number of overlapping points.
 
@@ -356,12 +436,89 @@ If you'd like some practice, give these exercises a try
 
 __Exercise 1__: Make a plot of `year` (x) vs `lifeExp` (y), with points coloured by continent. Then, to that same plot, fit a straight regression line to each continent, without the error bars. If you can, try piping the data frame into the `ggplot()` function.
 
+
+```r
+gapminder %>%
+  ggplot(aes(x=year, y=lifeExp, colour=continent)) +
+  geom_point() +
+  geom_smooth(method="lm", se=FALSE)
+```
+
+![](cm008_exercise_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
+
+
 __Exercise 2__: Repeat Exercise 1, but switch the _regression line_ and _geom\_point_ layers. How is this plot different from that of Exercise 1?
+
+ - This is different because the line points write over the line, rather than line running over the points in the above graph
+
+
+```r
+gapminder %>%
+  ggplot(aes(x=year, y=lifeExp, colour=continent)) +
+  geom_smooth(method="lm", se=FALSE) +
+  geom_point()
+```
+
+![](cm008_exercise_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
 
 __Exercise 3__: Omit the `geom_point()` layer from either of the above two plots (it doesn't matter which). Does the line still show up, even though the data aren't shown? Why or why not?
 
+ - Yes, it still shows up. The geom_smooth function is taking its data from the aes() part of ggplot(), it doesn't care whether the same aes() is used to make points or not.
+
+```r
+gapminder %>%
+  ggplot(aes(x=year, y=lifeExp, colour=continent)) +
+  geom_smooth(method="lm", se=FALSE) #+
+```
+
+![](cm008_exercise_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
+
+```r
+  #geom_point()
+```
+
+
 __Exercise 4__: Make a plot of `year` (x) vs `lifeExp` (y), facetted by continent. Then, fit a smoother through the data for each continent, without the error bars. Choose a span that you feel is appropriate.
 
-__Exercise 5__: Plot the population over time (year) using lines, so that each country has its own line. Colour by `gdpPercap`. Add alpha transparency to your liking. 
+
+```r
+gapminder %>%
+  ggplot(aes(x=year, y=lifeExp, colour=continent)) +
+  geom_point() +
+  facet_wrap(~continent) +
+  geom_smooth(method="lm", se=FALSE)
+```
+
+![](cm008_exercise_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
+
+
+
+
+__Exercise 5__: Plot the population over time (year) using lines, so that each country has its own line. Colour by `gdpPercap`. Add alpha transparency to your liking.
+
+
+```r
+gapminder %>%
+  ggplot(aes(x=year, y=pop, group=country, colour=gdpPercap)) +
+  geom_line(alpha=0.2, size=1.5) +
+  scale_y_log10(labels=scales::comma_format()) +
+  scale_colour_gradient(low="yellow3", high="darkgreen")
+```
+
+![](cm008_exercise_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
+
+
 
 __Exercise 6__: Add points to the plot in Exercise 5.
+
+```r
+gapminder %>%
+  ggplot(aes(x=year, y=pop, group=country, colour=gdpPercap)) +
+  geom_line(alpha=0.2, size=1.5) +
+  scale_y_log10(labels=scales::comma_format()) +
+  scale_colour_gradient(low="yellow3", high="darkgreen") +
+  geom_point(alpha=1)
+```
+
+![](cm008_exercise_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
+
