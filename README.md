@@ -4,6 +4,7 @@
 
 This repository holds all of my work from in-class activities during _STAT 545_ lectures during the __Fall 2019__ semester at _UBC_. My in-class work and notes are organized in folders by lecture. Here is my work to date:
 
+### Lectures and in-class work
 | Lecture # |   Date   | Links to folders | Links to html pages | 
 |-----------|:---------|:----------------:|:-------------|
 |     1     | Sept 3   | _NA_             | _NA_ |
@@ -35,6 +36,27 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 [110]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_07-Sep24/cm007-exercise.html>
 [111]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_08-Sep26/cm008_notes.html>
 [112]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_08-Sep26/cm008_exercise.html>
+
+### Homework assignments:
+| Assignment # |   Date   | Links to folders  | Links to html pages | 
+|--------------|:---------|:-----------------:|:--------------------|
+|     1        | Sept 17  | [click here][201] | [Slides][301] |
+|     2        | Sept 24  | [click here][202] | [Assignment 2][302] |
+|     3        | Oct 3    | [click here][203] |  |
+|     4        | Oct 10   | [click here][204] |  |
+|     5        | Oct 17   | [click here][205] |  |
+
+[201]: <https://github.com/STAT545-UBC-hw-2019-20/stat545-hw-trevor-baker/tree/master/Assignments/Assignment_01>
+[202]: <https://github.com/STAT545-UBC-hw-2019-20/stat545-hw-trevor-baker/tree/master/Assignments/Assignment_02>
+[203]: <https://github.com/STAT545-UBC-hw-2019-20/stat545-hw-trevor-baker/tree/master/Assignments/Assignment_03>
+[204]: <https://github.com/STAT545-UBC-hw-2019-20/stat545-hw-trevor-baker/tree/master/Assignments/Assignment_04>
+[205]: <https://github.com/STAT545-UBC-hw-2019-20/stat545-hw-trevor-baker/tree/master/Assignments/Assignment_05>
+
+[301]: <https://stat545-ubc-hw-2019-20.github.io/stat545-hw-trevor-baker/Assignments/Assignment_01/hw01_slides.html>
+[302]: <https://stat545-ubc-hw-2019-20.github.io/stat545-hw-trevor-baker/Assignments/Assignment_02/hw02.html>
+[303]: <https://stat545-ubc-hw-2019-20.github.io/stat545-hw-trevor-baker/Assignments/Assignment_03/hw03.html>
+[304]: <https://stat545-ubc-hw-2019-20.github.io/stat545-hw-trevor-baker/Assignments/Assignment_04/hw04.html>
+[305]: <https://stat545-ubc-hw-2019-20.github.io/stat545-hw-trevor-baker/Assignments/Assignment_05/hw05.html>
 
 
 ## Who am I?
