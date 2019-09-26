@@ -5,7 +5,7 @@
 This repository holds all of my work from in-class activities during _STAT 545_ lectures during the __Fall 2019__ semester at _UBC_. My in-class work and notes are organized in folders by lecture. Here is my work to date:
 
 | Lecture # |   Date   | Links to folders | Links to html pages | 
-|-----------|:---------|:----------------:|:-------------:|
+|-----------|:---------|:----------------:|:-------------|
 |     1     | Sept 3   | _NA_             | _NA_ |
 |     2     | Sept 5   | [click here][1]  | _NA_ |
 |     3     | Sept 10  | [click here][2]  | [notes][101], [rmd exploration][102], [making slides][103] |
