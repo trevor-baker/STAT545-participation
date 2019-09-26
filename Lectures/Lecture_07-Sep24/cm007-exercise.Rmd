@@ -15,7 +15,7 @@ knitr::opts_chunk$set(error = TRUE, warning = FALSE)
 ```
 
 ```{r}
-install.packages("tsibble")
+#install.packages("tsibble")
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(gapminder))
 suppressPackageStartupMessages(library(tsibble))

@@ -15,13 +15,31 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 |     7     | Sept 24  | [click here][6]  |
 |     8     | Sept 26  | [click here][7]  |
 
-[1]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture%2002%20-%20Sep%205>
-[2]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture%2003%20-%20Sep%2010>
-[3]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture%2004%20-%20Sep%2012>
-[4]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture%2005%20-%20Sep%2017>
-[5]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture%2006%20-%20Sep%2019>
-[6]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture%2007%20-%20Sep%2024>
-[7]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture%2008%20-%20Sep%2026>
+[1]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_02-Sep05>
+[2]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_03-Sep10>
+[3]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_04-Sep12>
+[4]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_05-Sep17>
+[5]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_06-Sep19>
+[6]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_07-Sep24>
+[7]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_08-Sep26>
+
+Here are my html files:
+
+[Lecture 3, Navigating github](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/navigating_github.html) 
+[Lecture 3, rmd exploration](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/rmd_exploration.html)
+[Lecture 3, slide creation](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/slide_exploration.html)
+[Lecture 4, notes](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_04-Sep12/lec4_notes.html)
+[Lecture 5, notes](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_05-Sep17/Lec5_notes.html)
+[Lecture 5, worksheet](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_05-Sep17/Lec05_worksheet.html)
+[Lecture 6, notes](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_06-Sep19/Lec06_notes.html)
+[Lecture 6, exercise](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_06-Sep19/cm006-exercise.html)
+[Lecture 6, notes](https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_06-Sep19/Lec06notes.html)
+
+
+
+
+
+
 
 
 ## Who am I?

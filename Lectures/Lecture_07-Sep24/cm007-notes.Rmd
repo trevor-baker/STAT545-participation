@@ -67,13 +67,14 @@ whereas `round()` just works linearly along vector
 `lubridate`
 ```{r}
 
+#can standardize a messy bunch of date inputs - thes emust be in month-day-year order though
 ymd <- lubridate::mdy("Sep 24. 2019", 
                "09 25 19", 
                "Sept 26 2019",
                "Septem 27 2019",
                "September 28 2019")
 
-#lubridate does not do year-month format
+#lubridate does not do year-month format but tsibble does
 tsibble::yearmonth(ymd)
 
 
@@ -83,9 +84,10 @@ tsibble::yearmonth(ymd)
 can create tsibble object like so, give date column as "index"
 ```{r}
 
-energy <- here::here("data", "daily_consumption.csv") %>% 
-  read_csv()
-energy <- as_tsibble(energy)
+#didn't get this to work, couldnt get data loaded
+# energy <- here::here("data", "daily_consumption.csv") %>% 
+#   read_csv()
+# energy <- as_tsibble(energy)
 
 
 ```

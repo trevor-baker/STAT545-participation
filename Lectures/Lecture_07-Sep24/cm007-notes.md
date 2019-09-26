@@ -52,7 +52,7 @@ gapminder %>%
     ## 10 Afghanistan Asia       1997    41.8 22227415      635.  59.5
     ## # ... with 1,694 more rows
 
-‘group\_by’ can group by a novel variable, adding a new column to the
+`group_by` can group by a novel variable, adding a new column to the
 tibble:
 
 ``` r
@@ -101,5 +101,30 @@ gapminder %>%
     ## # ... with 1,694 more rows
 
 *Window functions* take in vector, return a vector that depends on the
-entire vector e.g. rank - you can’t get the right output going linearly
-along vector, need to look at whole whereas ‘round()’
+entire vector e.g. `rank()` - you can’t get the right output going
+linearly along vector, need to look at whole whereas `round()` just
+works linearly along vector
+
+`lubridate`
+
+``` r
+ymd <- lubridate::mdy("Sep 24. 2019", 
+               "09 25 19", 
+               "Sept 26 2019",
+               "Septem 27 2019",
+               "September 28 2019")
+
+#lubridate does not do year-month format but tsibble does
+tsibble::yearmonth(ymd)
+```
+
+    ## [1] "2019 Sep" "2019 Sep" "2019 Sep" "2019 Sep" "2019 Sep"
+
+`tsibble` can create tsibble object like so, give date column as “index”
+
+``` r
+#didn't get this to work, couldnt get data loaded
+# energy <- here::here("data", "daily_consumption.csv") %>% 
+#   read_csv()
+# energy <- as_tsibble(energy)
+```
