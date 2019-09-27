@@ -42,7 +42,7 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 |--------------|:---------|:-----------------:|:--------------------------------|
 |     1        | Sept 17  | [click here][201] | [making basic slides][301] |
 |     2        | Sept 24  | [click here][202] | [dplyr and basic plotting][302] |
-|     3        | Oct 3    | [click here][203] |  |
+|     3        | Oct 3    | [click here][203] | [dplyr and ggplot2][303] |
 |     4        | Oct 10   | [click here][204] |  |
 |     5        | Oct 17   | [click here][205] |  |
 
