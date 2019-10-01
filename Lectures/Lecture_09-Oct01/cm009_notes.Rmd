@@ -15,7 +15,7 @@ library(tidyverse)
 
 
 
-```{r}
+```{r haireye}
 
 haireye_untidy <- data.frame(hair=c("black","blue","purple"),
                              brown_eyed=c(3,45,6),
@@ -46,4 +46,4 @@ haireye_untidy %>%
 ```
 
 
-
+# work today was mostly in the cm009_exercise.Rmd file
