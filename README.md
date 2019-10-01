@@ -15,6 +15,7 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 |     6     | Sept 19  | [click here][5]  | [notes][107], [dplyr exercise][108] |
 |     7     | Sept 24  | [click here][6]  | [notes][109], [dplyr exercise 2][110] |
 |     8     | Sept 26  | [click here][7]  | [notes][111], [ggplot exercise][112] |
+|     9     | Oct 1    | [click here][8]  | [notes][113], [ggplot exercise][114] |
 
 [1]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_02-Sep05>
 [2]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_03-Sep10>
@@ -23,6 +24,7 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 [5]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_06-Sep19>
 [6]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_07-Sep24>
 [7]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_08-Sep26>
+[8]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_09-Oct1>
 
 [101]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/navigating_github.html>
 [102]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/rmd_exploration.html> 
@@ -36,6 +38,9 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 [110]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_07-Sep24/cm007-exercise.html>
 [111]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_08-Sep26/cm008_notes.html>
 [112]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_08-Sep26/cm008_exercise.html>
+[113]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_09-Oct1/cm009_notes.html>
+[114]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_09-Oct1/cm009_exercise.html>
+
 
 ### Homework assignments:
 | Assignment # |   Date   | Links to folders  | Links to html pages             | 
