@@ -1,0 +1,49 @@
+---
+title: "cm009_notes"
+author: "Trevor Baker"
+date: "01/10/2019"
+output: 
+  html_document:
+    keep_md: true
+---
+
+```{r setup}
+
+library(tidyverse)
+
+```
+
+
+
+```{r}
+
+haireye_untidy <- data.frame(hair=c("black","blue","purple"),
+                             brown_eyed=c(3,45,6),
+                             red_eyed=c(2,34,56),
+                             black_eyed=c(3,4,26))
+
+#method 1, static column names
+haireye_untidy %>% 
+  pivot_longer(cols      = c(brown_eyed, red_eyed, black_eyed),
+               names_to  = "eye",
+               values_to = "n")
+
+#method 2, better, flexible col names
+haireye_untidy %>% 
+  pivot_longer(cols      = -hair,
+               names_to  = "eye",
+               values_to = "n")
+
+
+#make a longer dataset, one row per person, yet to be counted up
+haireye_untidy %>% 
+  pivot_longer(cols      = -hair,
+               names_to  = "eye",
+               values_to = "n") %>%
+  uncount(n)
+
+
+```
+
+
+
