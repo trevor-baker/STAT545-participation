@@ -125,7 +125,7 @@ email %>%
 n <- 100
 tibble(label = "Sample A",
              x = rnorm(n),
-             y=x+rnorm(n))
+             y = x+rnorm(n) )
 ```
 
 
@@ -153,14 +153,13 @@ experiment <- tibble(
 )
 #original
 experiment %>%
-  expand(name, trt, rep)
+  complete( name, trt, rep)
 
-#i dont know how to work on original with one change. this seems ok:
+
+#fixed, so Alex doesn't get NA trt=b data
 experiment %>%
-  pivot_longer(cols=c(-name, -trt, -rep),
-               names_to=c("msmt_num"),
-               names_prefix="measurement_",
-               values_to="val")
+  complete( nesting(name, trt), rep)
+
 ```
 
 
