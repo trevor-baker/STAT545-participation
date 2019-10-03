@@ -1,0 +1,103 @@
+---
+title: "cm010_notes"
+author: "Trevor Baker"
+date: "03/10/2019"
+output: html_document
+---
+
+```{r setup}
+
+library(tidyverse)
+library(tidyr)
+
+
+```
+
+
+
+##Tibble joins
+
+ 
+### Mutating joins
+
+- adding new column(s) onto base tibble
+- see r4ds chapter 13.4
+
+```{r join_mutate}
+
+x <- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+
+```
+
+#### inner join
+
+ - like a `merge()`
+ 
+```{r join_inner}
+
+inner_join(x, y, by = "key") #keep only common keys
+
+```
+
+#### outer join
+
+__left_join:__ keep all obs in x; this is like the default join, adding columns to your base table x
+__right_join:__ keep all obs in y; right_join(x,y) is same as left_join(y,x)
+__full_join:__ keep all obs in both
+
+```{r join_outer}
+
+left_join(x, y) #keeps key 1,2,3
+right_join(x, y) #keeps key 1,2,4
+full_join(x, y) #keeps all keys
+
+```
+
+ 
+ ### filter joins
+ 
+ __semi_join:__ keep all in x that have match in y
+ __anti_join:__ drop all in x that have match in y
+ 
+ But the _columns from y are not added_ 
+ - so it's basically a way of filtering down your x table based on y's contents, rather than joining columns together.
+ 
+ 
+```{r}
+semi_join(x,y)
+anti_join(x,y)
+
+```
+
+### set operations
+
+- these are `intersect()`, `union()`, `setdiff()`
+- not a way of joining but of _identifying common or differing members_, which could then be used for joining
+
+- intersect
+  + return common members
+- union
+  + return all members of both
+- setdiff
+  + return members of x are not in y
+  
+If you do these on a dataframe, then it evaluates by row, i.e. treats one row the way a single value is treated in a vector.
+
+### binding
+
+__tidyr__ has `bind_rows()` and `bind_cols()` that function like `rbind()` and `cbind()`
+
+__bind_rows__ both tables need to have same columns, then bind together
+__bind_cols__ both tables need to have same rows, then bind together
+ 
