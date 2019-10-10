@@ -18,7 +18,7 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 |     9     | Oct 1    | [click here][8]  | [notes][113], [ggplot exercise][114] |
 |     10    | Oct 3    | [click here][9]  | [notes][115], [ggplot exercise][116] |
 |     11    | Oct 8    | [click here][10] | _NA_ |
-|     12    | Oct 10   | [click here][11] | [notes][117], [ggplot exercise][118] |
+|     12    | Oct 10   | [click here][11] | [factor exercist][117]|
 |     13    | Oct 15   | [click here][12] | _NA_ |
 |     14    | Oct 17   | [click here][13] | _NA_ |
 
@@ -52,8 +52,7 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 [114]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_09-Oct1/cm009_exercise.html>
 [115]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_10-Oct3/cm010_notes.html>
 [116]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_10-Oct3/cm010_exercise.html>
-[117]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_10-Oct3/cm011_work.html>
-[118]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_10-Oct3/cm010_exercise.html>
+[117]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_10-Oct3/cm012_exercise.html>
 
 
 
