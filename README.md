@@ -17,6 +17,10 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 |     8     | Sept 26  | [click here][7]  | [notes][111], [ggplot exercise][112] |
 |     9     | Oct 1    | [click here][8]  | [notes][113], [ggplot exercise][114] |
 |     10    | Oct 3    | [click here][9]  | [notes][115], [ggplot exercise][116] |
+|     11    | Oct 8    | [click here][10] | _NA_ |
+|     12    | Oct 10   | [click here][11] | [notes][117], [ggplot exercise][118] |
+|     13    | Oct 15   | [click here][12] | _NA_ |
+|     14    | Oct 17   | [click here][13] | _NA_ |
 
 [1]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_02-Sep05>
 [2]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_03-Sep10>
@@ -27,6 +31,10 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 [7]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_08-Sep26>
 [8]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_09-Oct1>
 [9]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_10-Oct3>
+[10]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_11-Oct8>
+[11]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_12-Oct10>
+[12]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_13-Oct15>
+[13]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_14-Oct17>
 
 [101]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/navigating_github.html>
 [102]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/rmd_exploration.html> 
@@ -44,6 +52,8 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 [114]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_09-Oct1/cm009_exercise.html>
 [115]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_10-Oct3/cm010_notes.html>
 [116]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_10-Oct3/cm010_exercise.html>
+[117]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_10-Oct3/cm011_work.html>
+[118]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_10-Oct3/cm010_exercise.html>
 
 
 

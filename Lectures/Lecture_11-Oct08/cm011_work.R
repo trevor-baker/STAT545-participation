@@ -25,7 +25,16 @@ gm <- read_csv("./gapminder.csv")
   new.path2 <- here::here("Lectures","Lecture_11-Oct08","gapminder__.csv") #this creates the path I want
   write_csv(gm,new.path2) #this will write to my Oct08 lecture folder
 
-
+  #NOTES:
+  #here::here() works differently depending file type:
+  # - in an Rmd file, here::here would look in the folder that hosts the Rmd file
+  # - in an R script, here::here would look for nearest root folder with Rproj file
+  # -- 
+  # - also the set_here function puts a .here file in your working directory,
+  # -- but if your .here containing folder is within a file path that contains a .Rproj file at a lower level, 
+  # --- then it will set the here location as the folder with the Rproj file, not the folder it just made the .here file in 
+  
+  
 #view data
 View(gm)
 
@@ -46,18 +55,16 @@ gm_summ %>%
   theme_bw()
 
 
-# #load outside data - does not work , file corrupted
-# data_url <- "http://gattonweb.uky.edu/sheather/book/docs/datasets/GreatestGivers.xls"
-# #need to do this download first for xls files
-# download.file(url=data_url, 
-#               destfile=here::here("Lectures","Lecture_11-Oct08","gg.xls")) #my own file name
-# 
-# file.name <- basename(data_url) #using the existing file name from a url or file path
-# saved.file <- here::here("Lectures","Lecture_11-Oct08", file.name) #construct file path
-# download.file(url=data_url, 
-#               destfile=saved.file) #downloading the file 
-# gg <- readxl::read_excel(saved.file,
-#                          trim_ws = TRUE) #does not work, says file corrupted
+#load outside data
+data_url <- "http://gattonweb.uky.edu/sheather/book/docs/datasets/GreatestGivers.xls"
+file.name <- basename(data_url) #using the existing file name from a url or file path
+#saved.file <- file.name
+saved.file <- here::here("Lectures","Lecture_11-Oct08", file.name) #construct file path
+download.file(url=data_url, 
+              mode="wb", #need this arg for a workbook, excel file
+              destfile=saved.file) #downloading the file
+gg <- readxl::read_excel(saved.file,
+                         trim_ws = TRUE)
 
 
 #load Firas' data
