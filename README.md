@@ -20,7 +20,7 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 |     11    | Oct 8    | [click here][10] | [class work][1161] |
 |     12    | Oct 10   | [click here][11] | [factor exercise][117]|
 |     13    | Oct 15   | [click here][12] | [notes][118], [plotting exercise][119] |
-|     14    | Oct 17   | [click here][13] | _NA_ |
+|     14    | Oct 17   | [click here][13] | [model fitting][120] |
 
 [1]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_02-Sep05>
 [2]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_03-Sep10>
@@ -56,6 +56,7 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 [117]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_12-Oct10/cm012_exercise.html>
 [118]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_13-Oct15/cm013_notes.html>
 [119]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_13-Oct15/cm013_exercise.html>
+[120]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_14-Oct17/cm014_exercise.html>
 
 
 

@@ -97,32 +97,57 @@ First, create a subset of the `gapminder` dataset containing only the country of
 
 Now, using the `lm()` function we will create the linear model
 ```{r}
-(my_lm <- lm(gm_France$lifeExp ~ gm_France$year))
+(my_lm <- lm(gm_France$lifeExp ~ gm_France$year)) #format is y ~ x
 ```
 Does that mean that the life expectency at "year 0" was equal to -397.7646?!
 We are interested in the modeling results around the modeling period which starts at year 1952. To get a meaniningful "interpretable" intercept we can use the `I()` function.
 ```{r}
-(my_lm <- lm(lifeExp ~ I(year-1952), gm_France))
+(my_lm <- lm(lifeExp ~ I(year-1952), gm_France)) #I() function makes R use the modified data 
+
+#if I do it like this it gives errors - there is no column called "year-1952"
+  #(my_lm <- lm(lifeExp ~ (year-1952), gm_France)) 
 
 ```
 
 Use the `unclass()` function to take a look at how the `lm()` object actually looks like.
 ```{r}
-unclass(my_lm)
+unclass(my_lm) #this gives a weird R output, plus it gives a two-col dataframe containing all the predicted values
 ```
 
 To complicate things further, some info is stored in _another_ list after applying the `summary` function:
 
 ```{r}
-summary(my_lm)
+summary(my_lm) #this gives R squared, st err, significance of factors
 ```
+
+Some other things we could do with the linear model summary stats
+```{r}
+(tidy(my_lm)) #this gives a cleaner outputs of the summary() outputs
+
+(newmy_lm <- augment(my_lm)) #this gives a detailed output of each model prediction
+ 
+#this gives a freq distribution of residuals (predicted value vs actual value)
+ggplot(newmy_lm, 
+       aes(.resid) ) +
+  geom_freqpoly( binwidth = 0.5 )
+```
+
 
 We can use the `predict()` function to make predictions from the model (default is to use fitting/training data). Here are the predictions:
 
 ```{r}
 predict(my_lm) %>% 
-  head()
+  head() %>% round(digits=1) #this is the same output as newmy_lm$.fitted
+
+newmy_lm$.fitted %>% round(digits=1)
+
 ```
+
+
+
+
+
+
 Or we can predict on a new dataset:
 ```{r}
 years1 = FILL_THIS_IN
