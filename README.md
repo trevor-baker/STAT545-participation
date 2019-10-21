@@ -66,7 +66,7 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 |     2        | Sept 24  | [click here][202] | [dplyr and basic plotting][302] |
 |     3        | Oct 3    | [click here][203] | [dplyr and ggplot2][303] |
 |     4        | Oct 10   | [click here][204] | [tidy data and joins][304] |
-|     5        | Oct 17   | [click here][205] |  |
+|     5        | Oct 17   | [click here][205] | [factors and data import-export][305] |
 
 [201]: <https://github.com/STAT545-UBC-hw-2019-20/stat545-hw-trevor-baker/tree/master/Assignments/Assignment_01>
 [202]: <https://github.com/STAT545-UBC-hw-2019-20/stat545-hw-trevor-baker/tree/master/Assignments/Assignment_02>

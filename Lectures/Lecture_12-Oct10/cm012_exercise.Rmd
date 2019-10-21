@@ -133,16 +133,18 @@ What if we want to get rid of some levels that are "unused" - how do we do that?
 The function `droplevels()` operates on all the factors in a data frame or on a single factor. The function `forcats::fct_drop()` operates on a factor.
 
 ```{r dropLevels }
+#method 1
 gm_drop_1 <- gm2 %>% 
   droplevels()
-
-gm_drop_2 <- gm2 %>% mutate(country=forcats::fct_drop(gm$country))
 
 gm_drop_1$country %>% nlevels()
 gm_drop_1$continent %>% nlevels() #in the first way the extra factors were dropped from continent as well
 
+#method 2
+gm_drop_2 <- gm2 %>% mutate(country=forcats::fct_drop(gm$country))
+
 gm_drop_2$country %>% nlevels()
-gm_drop_2$continent %>% nlevels() #the second way acts on country only and keep sall continent levels
+gm_drop_2$continent %>% nlevels() #the second way acts on country only and keeps all continent levels
 
 ```
 
