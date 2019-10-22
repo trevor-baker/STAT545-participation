@@ -12,11 +12,8 @@ Here is the corresponding _Organization_ Account:
 ### My links:
 This is the URL for __my participation__ repository:
 
-[My participation repo](https://github.com/trevor-baker/STAT545-participation)
+[My participation repository](https://github.com/trevor-baker/STAT545-participation)
 
 It belongs to my _Personal_ Account:
 
 [My personal account page](https://github.com/trevor-baker)
-
-
-
