@@ -6,7 +6,11 @@ output: html_document
 ---
 
 ## Plotting packages
+
 base R - slow
+
 lattice - outdated
+
 ggplot2 - good
+
 plotly - interactive
