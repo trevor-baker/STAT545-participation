@@ -36,6 +36,7 @@ This repository holds all of my work from in-class activities during _STAT 545_ 
 [12]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_13-Oct15>
 [13]: <https://github.com/trevor-baker/STAT545-participation/tree/master/Lectures/Lecture_14-Oct17>
 
+
 [101]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/navigating_github.html>
 [102]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/rmd_exploration.html> 
 [103]: <https://trevor-baker.github.io/STAT545-participation/Lectures/Lecture_03-Sep10/slide_exploration.html>
