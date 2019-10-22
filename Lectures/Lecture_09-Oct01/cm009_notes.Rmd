@@ -46,4 +46,4 @@ haireye_untidy %>%
 ```
 
 
-# work today was mostly in the cm009_exercise.Rmd file
+## Class work today was mostly in the cm009_exercise.Rmd file
