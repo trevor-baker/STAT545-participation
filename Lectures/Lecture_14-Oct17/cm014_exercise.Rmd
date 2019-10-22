@@ -33,7 +33,8 @@ Examples: Use the scatterplot below:
 
 ggplot(mtcars, aes(wt, mpg)) +
   geom_point() +
-  labs(x = "Weight (1000's of lbs)")
+  labs(x = "Weight (1000's of lbs)") +
+  geom_smooth(method="lm") #add linear model line
 
 ```
 
@@ -44,7 +45,8 @@ Example: What can we say about rear axle ratio if we know something about quarte
 ggplot(mtcars, aes(qsec, drat)) + 
   geom_point() +
   labs(x = "Quarter mile time",
-       y = "Rear axle ratio")
+       y = "Rear axle ratio") +
+  geom_smooth(method="lm") #add linear model line, wide grey st.err b/c poor relationship
 ```
 
 
@@ -92,7 +94,7 @@ Exercise:
 
 First, create a subset of the `gapminder` dataset containing only the country of `France
 ```{r}
-(gm_France <- gapminder %>% filter(country=="France") )
+( gm_France <- gapminder %>% filter(country=="France") )
 ```
 
 Now, using the `lm()` function we will create the linear model
@@ -122,9 +124,9 @@ summary(my_lm) #this gives R squared, st err, significance of factors
 
 Some other things we could do with the linear model summary stats
 ```{r}
-(tidy(my_lm)) #this gives a cleaner outputs of the summary() outputs
+broom::tidy(my_lm) #this gives a cleaner outputs of the summary() outputs
 
-(newmy_lm <- augment(my_lm)) #this gives a detailed output of each model prediction
+(newmy_lm <- broom::augment(my_lm)) #this gives a detailed output of each model prediction
  
 #this gives a freq distribution of residuals (predicted value vs actual value)
 ggplot(newmy_lm, 
@@ -137,7 +139,7 @@ We can use the `predict()` function to make predictions from the model (default 
 
 ```{r}
 predict(my_lm) %>% 
-  head() %>% round(digits=1) #this is the same output as newmy_lm$.fitted
+  head() %>% round(digits=1) #this is the same output as newmy_lm$.fitted, below
 
 newmy_lm$.fitted %>% round(digits=1)
 
@@ -150,8 +152,12 @@ newmy_lm$.fitted %>% round(digits=1)
 
 Or we can predict on a new dataset:
 ```{r}
-years1 = FILL_THIS_IN
-predict(my_lm,years1)
+years1 <- gapminder %>% filter(year < 1970)
+gapminder %>% 
+  filter(year < 1970) %>% 
+  mutate(lifeExp_predict = predict(my_lm,years1)) %>%
+  ggplot(aes(lifeExp, lifeExp_predict)) +
+  geom_point() #this is useless, it predicts other country-year's lifeExp based onFrance's lifeExp-year relationship
 
 ```
 
@@ -160,29 +166,42 @@ predict(my_lm,years1)
 We can plot models (with one predictor/ X variable) using `ggplot2` through the `geom_smooth()` layer. Specifying `method="lm"` gives us the linear regression fit (but only visually!):
 
 ```{r}
-ggplot(gapminder, aes(gdpPercap, lifeExp)) +
+ggplot(gapminder, aes(x=gdpPercap, 
+                      y=lifeExp,
+                      colour=continent)) + #adding colour=continent makes it have different regressions for each continent
     geom_point() +
-    geom_smooth(method="lm") +
+    geom_smooth(aes(colour=NULL),method="lm") + #unless I make the colour mapping NULL here
     scale_x_log10()
 ```
 Lets consider another country "Zimbabwe", which has a unique behavior in the `lifeExp` and `year` relationship.
 ```{r}
-gapminder_Zimbabwe <- FILL_THIS_IN
-gapminder_Zimbabwe %>% ggplot(aes(year, lifeExp)) + geom_point()
+gapminder_Zimbabwe <- gapminder %>%
+                        filter(country=="Zimbabwe")
+gapminder_Zimbabwe %>% 
+  ggplot(aes(year, lifeExp)) + 
+  geom_point()
 ```
 Let's try fitting a linear model to this relationship
 ```{r}
-ggplot(gapminder_Zimbabwe, aes(year,lifeExp)) + geom_point()+geom_smooth(method = "lm", se = F)
+ggplot(gapminder_Zimbabwe, 
+       aes(year,lifeExp)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = F)
 ```
 Now we will try to fit a second degree polynomial and see what would that look like.
 ```{r}
-ggplot(FILL_THIS_IN) + geom_point()+geom_smooth(FILL_THIS_IN)
+ggplot(gapminder_Zimbabwe, aes(year, lifeExp)) + 
+  geom_point() + 
+  geom_smooth(method="lm",
+              formula = y ~ poly(I(x-1952), degree = 2))
 
 ```
 
 ```{r}
-lm_linear <- lm(data = gapminder,formula = FILL_THIS_IN)
-lm_poly <- lm(data = gapminder,formula = FILL_THIS_IN))
+lm_linear <- lm(data = gapminder,
+                formula = lifeExp ~ I(year-1952))
+lm_poly <- lm(data = gapminder,
+              formula = lifeExp ~ poly(I(year-1952), degree = 2))
 ```
 `anova` lets you compare between different models.
 ```{r}
@@ -198,15 +217,17 @@ How did R know that continent was a categorical variable?
 ```{r}
 class(gapminder$continent)
 levels(gapminder$continent)
-contrasts(gapminder$continent)
+contrasts(gapminder$continent) #ref level is Africa, frst alphabetically
 ```
 How can we change the reference level?
 ```{r}
-gapminder$continent <- relevel(gapminder$continent, ref = "Oceania")
+gapminder$continent <- relevel(gapminder$continent, 
+                               ref = "Oceania")
+contrasts(gapminder$continent)
 ```
 Let's build a new model
 ```{r}
-lm_cat2 <- lm(gdpPercap ~ I(year - 1952) + continent, data = gapminder)
+(lm_cat2 <- lm(gdpPercap ~ I(year - 1952) + continent, data = gapminder))
 
 ```
 
@@ -217,13 +238,25 @@ Let's make it easier to extract info, using the `broom` package. There are three
 
 1. `tidy`: extract statistical summaries about each component of the model.
     - Useful for _interpretation_ task.
-2. `augment`: add columns to the original data frame, giving information corresponding to each row.
-    - Useful for _prediction_ task.
-3. `glance`: extract statistical summaries about the model as a whole (1-row tibble).
-    - Useful for checking goodness of fit.
-
-Exercise: apply all three functions to our fitted model, `my_lm`. What do you see?
-
 ```{r}
 
+(broom::tidy(my_lm))
+
 ```
+2. `augment`: add columns to the original data frame, giving information corresponding to each row.
+    - Useful for _prediction_ task.
+```{r}
+
+(broom::augment(my_lm))
+
+```
+3. `glance`: extract statistical summaries about the model as a whole (1-row tibble).
+    - Useful for checking goodness of fit.
+```{r}
+
+(broom::glance(my_lm))
+
+```
+
+Exercise: apply all three functions to our fitted model, `my_lm`. What do you see?
+- done above
