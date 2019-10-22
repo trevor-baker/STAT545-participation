@@ -7,6 +7,7 @@ output: html_document
 
 ## Plotting packages
 
+
 base R - slow
 
 lattice - outdated
@@ -14,3 +15,5 @@ lattice - outdated
 ggplot2 - good
 
 plotly - interactive
+
+### Most of work today was in Lec05_worksheet.html
